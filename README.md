@@ -6,7 +6,7 @@ information about artists, releases, labels and more.
 ## Supported entities
 
 - [x] Artists
-- [ ] Release Groups
+- [x] Release Groups
 - [x] Releases
 - [ ] Recordings
 - [ ] Works

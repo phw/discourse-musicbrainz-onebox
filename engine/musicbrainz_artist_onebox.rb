@@ -1,19 +1,19 @@
-require 'onebox'
+require_relative "musicbrainz"
 
 module Onebox
   module Engine
     class MusicBrainzArtistOnebox
       include Engine
       include LayoutSupport
-      include JSON
+      include MusicBrainz
 
-      matches_regexp(/^https?:\/\/(?:beta\.)?musicbrainz\.org\/artist\/(?<mbid>[0-9a-z-]+)/)
+      matches_entity("artist")
       always_https
 
       private
 
       def url
-        "https://musicbrainz.org/ws/2/artist/#{match[:mbid]}?fmt=json"
+        "https://musicbrainz.org/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json"
       end
 
       def match

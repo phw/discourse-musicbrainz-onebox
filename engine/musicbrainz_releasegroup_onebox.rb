@@ -2,12 +2,12 @@ require_relative 'musicbrainz'
 
 module Onebox
   module Engine
-    class MusicBrainzReleaseOnebox
+    class MusicBrainzReleaseGroupOnebox
       include Engine
       include LayoutSupport
       include MusicBrainz
 
-      matches_entity("release")
+      matches_entity("release-group")
       always_https
 
       private
@@ -30,17 +30,18 @@ module Onebox
         data = {
           link: @url,
           title: raw["title"],
-          date: raw["date"],
-          artist: artist_credits
+          date: raw["first-release-date"],
+          artist: artist_credits,
+          type: raw["primary-type"],
+          image: image_url
         }
+
+        if raw["secondary-types"] && !raw["secondary-types"].empty?
+          data[:secondary] = raw["secondary-types"].join(", ")
+        end
 
         if !raw["disambiguation"].to_s.empty?
           data[:disambiguation] = raw["disambiguation"]
-        end
-
-        caa = raw["cover-art-archive"]
-        if caa && caa["artwork"] && caa["front"]
-          data[:image] = image_url
         end
 
         @data = data

@@ -5,5 +5,6 @@
 
 require_relative 'engine/musicbrainz_artist_onebox'
 require_relative 'engine/musicbrainz_release_onebox'
+require_relative 'engine/musicbrainz_releasegroup_onebox'
 
 Onebox.options.load_paths.push(File.join(File.dirname(__FILE__), "templates"))
