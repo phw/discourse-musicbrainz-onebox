@@ -1,7 +1,8 @@
 # name: musicbrainz-onebox
 # about: OneBox preview for MusicBrainz.org
-# version: 0.1.0
+# version: 0.1.1
 # authors: Philipp Wolfer <ph.wolfer@gmail.com>
+# url: https://github.com/phw/discourse-musicbrainz-onebox
 
 require_relative 'engine/musicbrainz_artist_onebox'
 require_relative 'engine/musicbrainz_release_onebox'
