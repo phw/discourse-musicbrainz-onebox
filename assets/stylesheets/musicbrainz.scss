@@ -1,0 +1,10 @@
+aside.onebox {
+  &.musicbrainzartist,
+  &.musicbrainzrelease,
+  &.musicbrainzreleasegroup {
+    .source {
+      background: url("/assets/favicons/musicbrainz.png") no-repeat 0 2px;
+      padding-left: 20px;
+    }
+  }
+}
