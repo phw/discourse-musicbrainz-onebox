@@ -10,7 +10,7 @@ information about artists, releases, labels and more.
 - [x] Releases
 - [ ] Recordings
 - [x] Works
-- [ ] Labels
+- [x] Labels
 - [ ] Place
 - [ ] Series
 - [ ] Events

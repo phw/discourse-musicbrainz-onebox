@@ -1,0 +1,20 @@
+{{#image}}
+<figure>
+  <img src="{{image}}" class="thumbnail"/>
+{{#image_source}}<figcaption>
+    <a href="{{image_source}}" class="image-source">image source</a>
+  </figcaption>{{/image_source}}
+</figure>
+{{/image}}
+
+<h3>
+  <a href='{{{link}}}'>{{title}}</a>
+  {{#disambiguation}}
+  <span class="disambiguation">({{disambiguation}})</span>
+  {{/disambiguation}}
+</h3>
+
+<p>
+  Label{{#area}} from {{area}}{{/area}},
+  {{#begin}}{{begin}}{{/begin}}{{#end}} &ndash; {{end}}{{/end}}
+</p>
