@@ -9,7 +9,7 @@ information about artists, releases, labels and more.
 - [x] Release Groups
 - [x] Releases
 - [ ] Recordings
-- [ ] Works
+- [x] Works
 - [ ] Labels
 - [ ] Place
 - [ ] Series

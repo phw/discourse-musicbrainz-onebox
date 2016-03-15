@@ -1,7 +1,8 @@
 aside.onebox {
   &.musicbrainzartist,
   &.musicbrainzrelease,
-  &.musicbrainzreleasegroup {
+  &.musicbrainzreleasegroup,
+  &.musicbrainzwork  {
     .source {
       background: url("/assets/favicons/musicbrainz.png") no-repeat 0 2px;
       padding-left: 20px;

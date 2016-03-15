@@ -7,6 +7,7 @@
 require_relative 'engine/musicbrainz_artist_onebox'
 require_relative 'engine/musicbrainz_release_onebox'
 require_relative 'engine/musicbrainz_releasegroup_onebox'
+require_relative 'engine/musicbrainz_work_onebox'
 
 register_asset "stylesheets/musicbrainz.scss"
 register_asset "favicons/musicbrainz.png"

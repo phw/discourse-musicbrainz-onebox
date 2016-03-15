@@ -18,6 +18,16 @@ module Onebox
         end
       end
 
+      def get_relations(targetEntity, types, direction)
+        return [] if !raw["relations"]
+
+        return raw["relations"].select do |rel|
+          rel["target-type"] == targetEntity &&
+            types.include?(rel["type"]) &&
+            rel["direction"] == direction
+        end
+      end
+
       module ClassMethods
         def matches_entity(entity)
           class_variable_set :@@entity, entity
