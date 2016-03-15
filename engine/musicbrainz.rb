@@ -31,7 +31,7 @@ module Onebox
       module ClassMethods
         def matches_entity(entity)
           class_variable_set :@@entity, entity
-          matches_regexp(/^https?:\/\/(?:beta\.)?musicbrainz\.org\/#{Regexp.escape(entity)}\/(?<mbid>[0-9a-z-]+)/)
+          matches_regexp(/^https?:\/\/(?<domain>(?:beta\.)?musicbrainz\.org)\/#{Regexp.escape(entity)}\/(?<mbid>[0-9a-z-]+)/)
         end
       end
 

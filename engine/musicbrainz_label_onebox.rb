@@ -15,7 +15,7 @@ module Onebox
       private
 
       def url
-        "https://musicbrainz.org/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels"
       end
 
       def match
