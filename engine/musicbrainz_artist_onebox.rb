@@ -1,4 +1,5 @@
 require_relative "musicbrainz"
+require_relative "wikimedia"
 
 module Onebox
   module Engine
@@ -6,6 +7,7 @@ module Onebox
       include Engine
       include LayoutSupport
       include MusicBrainz
+      include Wikimedia
 
       matches_entity("artist")
       always_https
@@ -13,7 +15,7 @@ module Onebox
       private
 
       def url
-        "https://musicbrainz.org/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json"
+        "https://musicbrainz.org/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels"
       end
 
       def match
@@ -42,6 +44,11 @@ module Onebox
           if !data[:end] && raw["life-span"]["ended"]
             data[:end] = "????"
           end
+        end
+
+        images = get_relations("url", ["image"], "forward")
+        if !images.empty?
+          data[:image] = image_url(images.first["url"]["resource"])
         end
 
         @data = data
