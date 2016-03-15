@@ -49,6 +49,9 @@ module Onebox
         images = get_relations("url", ["image"], "forward")
         if !images.empty?
           data[:image] = image_url(images.first["url"]["resource"])
+          if !data[:image].nil?
+            data[:image_source] = images.first["url"]["resource"]
+          end
         end
 
         @data = data
