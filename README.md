@@ -11,9 +11,10 @@ Use it to quickly display information about artists, releases, labels and more.
 - [x] Recordings
 - [x] Works
 - [x] Labels
-- [ ] Place
-- [ ] Series
+- [x] Place
 - [ ] Events
+- [ ] Series
+- [ ] Area
 
 ## Installation
 Please follow this official [plugin installation how-to](https://meta.discourse.org/t/install-a-plugin/19157).
