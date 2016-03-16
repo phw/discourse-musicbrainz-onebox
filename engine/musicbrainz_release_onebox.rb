@@ -30,6 +30,7 @@ module Onebox
         data = {
           link: @url,
           title: raw["title"],
+          status: raw["status"],
           date: raw["date"],
           artist: artist_credits
         }
