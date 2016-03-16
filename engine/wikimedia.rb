@@ -10,6 +10,7 @@ module Onebox
       end
 
       def image_url(url)
+        return nil if !SiteSetting.musicbrainz_load_wikimedia_images
         begin
           name = image_name(url)
           return nil if name.nil?

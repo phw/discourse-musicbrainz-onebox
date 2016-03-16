@@ -1,0 +1,3 @@
+plugins:
+  musicbrainz_load_wikimedia_images:
+    default: true
