@@ -23,17 +23,13 @@ module Onebox
       def data
         return @data if @data
 
-        data = {
+        @data = {
           link: @url,
-          title: raw["title"],
-          artist: artist_credits
+          title: raw["title"]
         }
 
-        if !raw["disambiguation"].to_s.empty?
-          data[:disambiguation] = raw["disambiguation"]
-        end
-
-        data[:type] = "video"
+        artist_credits
+        disambiguation
 
         types = []
         primary_type = (raw["video"] ? "video" : "recording")
@@ -45,14 +41,14 @@ module Onebox
           types << "instrumental" if attributes.include? "instrumental"
           types << "cover" if attributes.include? "cover"
           primary_type = "medley" if attributes.include? "medley"
-          data[:work] = work_rel["work"]["title"]
-          data[:work_url] = get_mb_url("work", work_rel["work"]["id"])
+          @data[:work] = work_rel["work"]["title"]
+          @data[:work_url] = get_mb_url("work", work_rel["work"]["id"])
         end
 
         types << primary_type
-        data[:type] = format_type(types)
+        @data[:type] = format_type(types)
 
-        @data = data
+        return @data
       end
 
       def format_type(types)

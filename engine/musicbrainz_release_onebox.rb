@@ -27,24 +27,22 @@ module Onebox
       def data
         return @data if @data
 
-        data = {
+        @data = {
           link: @url,
           title: raw["title"],
           status: raw["status"],
-          date: raw["date"],
-          artist: artist_credits
+          date: raw["date"]
         }
 
-        if !raw["disambiguation"].to_s.empty?
-          data[:disambiguation] = raw["disambiguation"]
-        end
+        artist_credits
+        disambiguation
 
         caa = raw["cover-art-archive"]
         if caa && caa["artwork"] && caa["front"]
-          data[:image] = image_url
+          @data[:image] = image_url
         end
 
-        @data = data
+        return @data
       end
 
     end

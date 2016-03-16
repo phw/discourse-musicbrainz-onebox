@@ -27,24 +27,22 @@ module Onebox
       def data
         return @data if @data
 
-        data = {
+        @data = {
           link: @url,
           title: raw["title"],
           date: raw["first-release-date"],
-          artist: artist_credits,
           type: raw["primary-type"],
           image: image_url
         }
 
+        artist_credits
+        disambiguation
+
         if raw["secondary-types"] && !raw["secondary-types"].empty?
-          data[:secondary] = raw["secondary-types"].join(", ")
+          @data[:secondary] = raw["secondary-types"].join(", ")
         end
 
-        if !raw["disambiguation"].to_s.empty?
-          data[:disambiguation] = raw["disambiguation"]
-        end
-
-        @data = data
+        return @data
       end
 
     end

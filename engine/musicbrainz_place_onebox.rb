@@ -1,5 +1,4 @@
 require_relative "musicbrainz"
-require_relative "wikimedia"
 
 module Onebox
   module Engine
@@ -7,7 +6,6 @@ module Onebox
       include Engine
       include LayoutSupport
       include MusicBrainz
-      include Wikimedia
 
       matches_entity("place")
       always_https
@@ -25,37 +23,18 @@ module Onebox
       def data
         return @data if @data
 
-        data = {
+        @data = {
           link: @url,
           title: raw["name"],
           type: raw["type"] != "Other" ? raw["type"] : "Place"
         }
 
-        if !raw["disambiguation"].to_s.empty?
-          data[:disambiguation] = raw["disambiguation"]
-        end
+        disambiguation
+        area
+        life_span
+        image
 
-        data[:area] = raw["area"]["name"] if raw["area"]
-
-        if raw["life-span"]
-          data[:lifespan] = true
-          data[:begin] = raw["life-span"]["begin"]
-          data[:end] = raw["life-span"]["end"]
-
-          if !data[:end] && raw["life-span"]["ended"]
-            data[:end] = "????"
-          end
-        end
-
-        image = get_relations("url", ["image"], "forward").first
-        if image
-          data[:image] = image_url(image["url"]["resource"])
-          if !data[:image].nil?
-            data[:image_source] = image["url"]["resource"]
-          end
-        end
-
-        @data = data
+        return @data
       end
     end
   end

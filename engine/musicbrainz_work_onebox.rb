@@ -23,20 +23,18 @@ module Onebox
       def data
         return @data if @data
 
-        data = {
+        @data = {
           link: @url,
           title: raw["title"],
           type: raw["type"],
           writers: written_by
         }
 
-        data[:type] = "Work" if data[:type].to_s.empty?
+        @data[:type] = "Work" if @data[:type].to_s.empty?
 
-        if !raw["disambiguation"].to_s.empty?
-          data[:disambiguation] = raw["disambiguation"]
-        end
+        disambiguation
 
-        @data = data
+        return @data
       end
 
       def written_by
