@@ -48,8 +48,13 @@ module Onebox
         join_sentence(writers.map { |rel| rel["artist"]["name"] })
       end
 
-      def join_sentence(arr)
-        return arr[0] if arr.length == 1
+      def join_sentence(arr, limit=5, limit_phrase="others")
+        arr = arr.uniq
+        if arr.length == 1
+          return arr[0]
+        elsif arr.length > limit
+          arr = arr[0..limit-2].push(limit_phrase)
+        end
         return "#{arr[0..-2].join(', ')} and #{arr.last}"
       end
 
