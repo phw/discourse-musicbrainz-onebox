@@ -8,13 +8,13 @@ Use it to quickly display information about artists, releases, labels and more.
 - [x] Artists
 - [x] Release Groups
 - [x] Releases
-- [ ] Recordings
+- [x] Recordings
 - [x] Works
 - [x] Labels
 - [ ] Place
 - [ ] Series
 - [ ] Events
- 
+
 ## Installation
 Please follow this official [plugin installation how-to](https://meta.discourse.org/t/install-a-plugin/19157).
 

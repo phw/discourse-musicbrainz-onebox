@@ -18,14 +18,18 @@ module Onebox
         end
       end
 
-      def get_relations(targetEntity, types, direction)
+      def get_relations(targetEntity, types, direction=nil)
         return [] if !raw["relations"]
 
         return raw["relations"].select do |rel|
           rel["target-type"] == targetEntity &&
             types.include?(rel["type"]) &&
-            rel["direction"] == direction
+            (direction.nil? || rel["direction"] == direction)
         end
+      end
+
+      def get_mb_url(entity, mbid)
+        "https://#{match[:domain]}/#{entity}/#{mbid}"
       end
 
       module ClassMethods

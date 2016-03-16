@@ -6,6 +6,7 @@
 
 require_relative 'engine/musicbrainz_artist_onebox'
 require_relative 'engine/musicbrainz_label_onebox'
+require_relative 'engine/musicbrainz_recording_onebox'
 require_relative 'engine/musicbrainz_release_onebox'
 require_relative 'engine/musicbrainz_releasegroup_onebox'
 require_relative 'engine/musicbrainz_work_onebox'
