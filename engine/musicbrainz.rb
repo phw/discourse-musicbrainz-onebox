@@ -65,6 +65,18 @@ module Onebox
         end
       end
 
+      def join_sentence(arr, limit=5, limit_phrase="others")
+        arr = arr.uniq
+        if arr.empty?
+          return nil
+        elsif arr.length == 1
+          return arr[0]
+        elsif arr.length > limit
+          arr = arr[0..limit-2].push(limit_phrase)
+        end
+        return "#{arr[0..-2].join(', ')} and #{arr.last}"
+      end
+
       def get_mb_url(entity, mbid)
         "https://#{match[:domain]}/#{entity}/#{mbid}"
       end

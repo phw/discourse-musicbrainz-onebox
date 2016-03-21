@@ -5,6 +5,7 @@
 # url: https://github.com/phw/discourse-musicbrainz-onebox
 
 require_relative 'engine/musicbrainz_artist_onebox'
+require_relative 'engine/musicbrainz_event_onebox'
 require_relative 'engine/musicbrainz_label_onebox'
 require_relative 'engine/musicbrainz_place_onebox'
 require_relative 'engine/musicbrainz_recording_onebox'

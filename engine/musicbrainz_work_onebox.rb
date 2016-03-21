@@ -40,20 +40,7 @@ module Onebox
       def written_by
         writers = get_relations(
           "artist", ["writer", "lyricist", "composer", "librettist"], "backward")
-
-        return nil if writers.empty?
-
         join_sentence(writers.map { |rel| rel["artist"]["name"] })
-      end
-
-      def join_sentence(arr, limit=5, limit_phrase="others")
-        arr = arr.uniq
-        if arr.length == 1
-          return arr[0]
-        elsif arr.length > limit
-          arr = arr[0..limit-2].push(limit_phrase)
-        end
-        return "#{arr[0..-2].join(', ')} and #{arr.last}"
       end
 
     end
