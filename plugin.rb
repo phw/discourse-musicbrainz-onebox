@@ -16,6 +16,5 @@ require_relative 'engine/musicbrainz_work_onebox'
 enabled_site_setting :musicbrainz_load_wikimedia_images
 
 register_asset "stylesheets/musicbrainz.scss"
-register_asset "favicons/musicbrainz.png"
 
 Onebox.options.load_paths.push(File.join(File.dirname(__FILE__), "templates"))
