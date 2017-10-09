@@ -36,13 +36,18 @@ module Onebox
       end
 
       def life_span
-        if raw["life-span"]
-          @data[:lifespan] = true
+        if raw["life-span"] && (raw["life-span"]["begin"] || raw["life-span"]["ended"])
           @data[:begin] = raw["life-span"]["begin"]
+          @data[:begin] = "????" if !@data[:begin]
           @data[:end] = raw["life-span"]["end"]
 
           if !@data[:end] && raw["life-span"]["ended"]
             @data[:end] = "????"
+          end
+
+          @data[:lifespan] = #{@data[:begin]}
+          if @data[:end]
+            @data[:lifespan] += "– #{@data[:end]}"
           end
         end
       end
@@ -78,7 +83,7 @@ module Onebox
       end
 
       def join_sentence(arr, limit=5, limit_phrase="others")
-        arr = arr.uniq
+        arr = arr.uniq.reject(&:nil?)
         if arr.empty?
           return nil
         elsif arr.length == 1
@@ -87,6 +92,11 @@ module Onebox
           arr = arr[0..limit-2].push(limit_phrase)
         end
         return "#{arr[0..-2].join(', ')} and #{arr.last}"
+      end
+
+      def join_list(arr)
+        arr = arr.reject(&:nil?)
+        return arr.join(', ')
       end
 
       def get_mb_url(entity, mbid)

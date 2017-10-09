@@ -34,6 +34,12 @@ module Onebox
         life_span
         image
 
+        data[:description] = join_list [
+          data["type"],
+          data["area"],
+          data["lifespan"]
+        ]
+
         return @data
       end
     end

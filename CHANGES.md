@@ -1,5 +1,6 @@
 # 0.5.0 - 2017-10-??
-- Set custom user agent to prevent rate limit blocking
+- Set custom user agent to prevent rate limit blocking (#10)
+- Prevent dangling commas in artist description (#9)
 
 # 0.4.0 - 2016-03-21
 - MusicBrainz event onebox
