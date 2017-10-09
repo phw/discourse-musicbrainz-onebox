@@ -1,10 +1,22 @@
-require_relative "wikimedia"
+require_relative "wikimedia_image"
 
 module Onebox
   module Engine
     module MusicBrainz
-      include JSON
-      include Wikimedia
+      include Onebox::Mixins::WikimediaImage
+
+      # Reimplement JSON mixin with proper user agent
+      def raw
+        begin
+          @raw ||= ::MultiJson.load(open(url,
+            "User-Agent" => "discourse-musicbrainz-onebox",
+            :read_timeout => timeout
+            ))
+        rescue OpenURI::HTTPError => e
+          Rails.logger.error e.message
+          raise
+        end
+      end
 
       def self.included(object)
         object.extend(ClassMethods)

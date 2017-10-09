@@ -1,6 +1,6 @@
 module Onebox
-  module Engine
-    module Wikimedia
+  module Mixins
+    module WikimediaImage
       private
 
       URL_REGEX = /^https?:\/\/commons\.wikimedia\.org\/wiki\/(?<name>File:.+)/
@@ -15,10 +15,13 @@ module Onebox
           name = wikimedia_image_name(url)
           return nil if name.nil?
           api_url = wikimedia_image_api_url(name)
-          result ||= ::MultiJson.load(open(api_url, read_timeout: timeout))
+          result ||= ::MultiJson.load(open(api_url,
+            "User-Agent" => "discourse-musicbrainz-onebox",
+            :read_timeout => timeout))
           pages = result["query"]["pages"]
           return pages.first[1]["imageinfo"].first["url"]
-        rescue
+        rescue Exception => e
+          Rails.logger.error e.message
           return nil
         end
       end

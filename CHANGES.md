@@ -1,3 +1,6 @@
+# 0.5.0 - 2017-10-??
+- Set custom user agent to prevent rate limit blocking
+
 # 0.4.0 - 2016-03-21
 - MusicBrainz event onebox
 
