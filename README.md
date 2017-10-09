@@ -20,6 +20,6 @@ Please follow this official [plugin installation how-to](https://meta.discourse.
 
 ## License
 
-Discourse MusicBrainz Onebox plugin © 2016 Philipp Wolfer <ph.wolfer@gmail.com>
+Discourse MusicBrainz Onebox plugin © 2016-2017 Philipp Wolfer <ph.wolfer@gmail.com>
 
 Published under the MIT license, see LICENSE.txt for details.
