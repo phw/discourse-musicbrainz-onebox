@@ -35,9 +35,9 @@ module Onebox
         image
 
         data[:description] = join_list [
-          data["type"],
-          data["area"],
-          data["lifespan"]
+          data[:type],
+          data[:area],
+          data[:lifespan]
         ]
 
         return @data
