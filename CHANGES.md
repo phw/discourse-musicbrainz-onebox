@@ -2,6 +2,7 @@
 - Do not onebox edit and history links (#8)
 - Check if release group cover art exists (#6)
 - Add CritiqueBrainz link for Release Groups, Artists, Events, Places (#5)
+- Add AcousticBrainz link for Recordings (#4)
 - Fix life-span not being displayed
 - Fix artist description always empty
 
