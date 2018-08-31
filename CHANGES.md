@@ -1,7 +1,11 @@
+# 0.6.0 - 2018-??-??
+- Do not onebox edit and history links (#8)
+
 # 0.5.0 - 2017-10-09
 - Set custom user agent to prevent rate limit blocking (#10)
 - Prevent dangling commas in artist description (#9)
-- Events: Show performers only if available 
+- Events: Show performers only if available
+- Fixed favicon asset loading
 
 # 0.4.0 - 2016-03-21
 - MusicBrainz event onebox
