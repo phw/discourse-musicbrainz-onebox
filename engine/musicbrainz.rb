@@ -13,7 +13,7 @@ module Onebox
             :read_timeout => timeout
             ))
         rescue OpenURI::HTTPError => e
-          Rails.logger.error e.message
+          Rails.logger.error "#{e.message}: #{url}"
           raise
         end
       end
