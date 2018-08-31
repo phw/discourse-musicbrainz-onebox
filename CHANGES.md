@@ -1,4 +1,4 @@
-# 0.6.0 - 2018-??-??
+# 0.6.0 - 2018-08-31
 - Do not onebox edit and history links (#8)
 - Check if release group cover art exists (#6)
 - Add CritiqueBrainz link for Release Groups, Artists, Events, Places (#5)
