@@ -1,5 +1,6 @@
 # 0.6.0 - 2018-??-??
 - Do not onebox edit and history links (#8)
+- Check if release group cover art exists (#6)
 
 # 0.5.0 - 2017-10-09
 - Set custom user agent to prevent rate limit blocking (#10)

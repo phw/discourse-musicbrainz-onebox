@@ -17,7 +17,24 @@ module Onebox
       end
 
       def image_url
-        "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}/front-500"
+        coverart_url = nil
+        begin
+          api_url = "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}"
+          open(api_url,
+            "User-Agent" => "discourse-musicbrainz-onebox",
+            :read_timeout => timeout,
+            :redirect => false
+            )
+        rescue OpenURI::HTTPRedirect => e
+          # Redirect indicates there is release group cover art available
+          coverart_url = "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}/front-500"
+        rescue OpenURI::HTTPError => e
+          # 404 means the release group does not exist or has no cover art.
+          # Everything else is unexpected and logged as an error.
+          Rails.logger.error e.message unless e.io.status[0] == "404"
+        end
+
+        return coverart_url
       end
 
       def match
