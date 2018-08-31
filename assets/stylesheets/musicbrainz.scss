@@ -43,6 +43,15 @@ aside.onebox {
       }
     }
 
+    .external-links {
+      float: right;
+
+      a > img {
+        margin: 0;
+        float: none;
+      }
+    }
+
     .disambiguation {
       color: #919191;
       font-weight: normal;

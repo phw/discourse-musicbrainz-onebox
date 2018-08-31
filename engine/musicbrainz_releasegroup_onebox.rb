@@ -46,6 +46,7 @@ module Onebox
 
         @data = {
           link: @url,
+          id: raw["id"],
           title: raw["title"],
           date: raw["first-release-date"],
           type: raw["primary-type"],
