@@ -20,6 +20,10 @@ module Onebox
         "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}/front-500"
       end
 
+      def image_source_url
+        "https://#{match[:domain]}/release/#{match[:mbid]}/cover-art"
+      end
+
       def match
         @match ||= @url.match(@@matcher)
       end
@@ -40,6 +44,7 @@ module Onebox
         caa = raw["cover-art-archive"]
         if caa && caa["artwork"] && caa["front"]
           @data[:image] = image_url
+          @data[:image_source] = image_source_url
         end
 
         return @data

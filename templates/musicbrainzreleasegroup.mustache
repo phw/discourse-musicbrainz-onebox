@@ -1,4 +1,11 @@
-{{#image}}<img src="{{image}}" class="thumbnail"/>{{/image}}
+{{#image}}
+<figure>
+  <a href="{{link}}"><img src="{{image}}" class="thumbnail"/></a>
+{{#image_source}}<figcaption>
+    <a href="{{image_source}}" class="image-source">image source</a>
+  </figcaption>{{/image_source}}
+</figure>
+{{/image}}
 
 <div class="external-links">
   <a href="https://critiquebrainz.org/release-group/{{id}}">
