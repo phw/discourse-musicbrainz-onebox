@@ -67,6 +67,8 @@ module Onebox
           @data[:image] = wikimedia_image_url(image["url"]["resource"])
           if !@data[:image].nil?
             @data[:image_source] = image["url"]["resource"]
+          elsif !image["url"]["resource"].empty?
+            @data[:image] = image["url"]["resource"]
           end
         end
       end
