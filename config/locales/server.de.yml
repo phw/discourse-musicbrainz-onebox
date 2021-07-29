@@ -1,2 +1,3 @@
-site_settings:
-  musicbrainz_load_wikimedia_images: Künstler- und Label-Bilder von Wikimedia laden
+de:
+  site_settings:
+    musicbrainz_load_wikimedia_images: Künstler- und Label-Bilder von Wikimedia laden
