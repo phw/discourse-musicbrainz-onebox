@@ -48,8 +48,22 @@ module Onebox
 
         types << primary_type
         @data[:type] = format_type(types)
+        description
 
         return @data
+      end
+
+      def description
+        key = if @data[:work] && @data[:artist]
+          "recording.description_work_artist"
+        elsif @data[:artist]
+          "recording.description_artist"
+        elsif @data[:work]
+          "recording.description_work"
+        else
+          "recording.description"
+        end
+        @data[:description] = I18n.t(key, escape_data)
       end
 
       def format_type(types)

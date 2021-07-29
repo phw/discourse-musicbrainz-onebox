@@ -27,20 +27,34 @@ module Onebox
           link: @url,
           title: raw["title"],
           type: raw["type"],
-          writers: written_by
+          writers: writers
         }
 
-        @data[:type] = "Work" if @data[:type].to_s.empty?
+        @data[:type] = I18n.t("work.type") if @data[:type].to_s.empty?
 
         disambiguation
+        description
 
         return @data
       end
 
-      def written_by
+      def description
+        key = if @data[:writers]
+          "work.description_writers"
+        else
+          "work.description"
+        end
+        @data[:description] = I18n.t(key, @data)
+      end
+
+      def writers
         writers = get_relations(
           "artist", ["writer", "lyricist", "composer", "librettist"], "backward")
-        join_sentence(writers.map { |rel| rel["artist"]["name"] })
+        if writers.empty?
+          nil
+        else
+          join_sentence(writers.map { |rel| rel["artist"]["name"] })
+        end
       end
 
     end

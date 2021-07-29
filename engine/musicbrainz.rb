@@ -45,9 +45,10 @@ module Onebox
             @data[:end] = "????"
           end
 
-          @data[:lifespan] = @data[:begin]
-          if @data[:end]
-            @data[:lifespan] += "– #{@data[:end]}"
+          if @data[:begin] && @data[:end]
+            @data[:lifespan] = I18n.t("general.date_range", @data)
+          else
+            @data[:lifespan] = @data[:begin] || @data[:end]
           end
         end
       end
@@ -67,6 +68,7 @@ module Onebox
           @data[:image] = wikimedia_image_url(image["url"]["resource"])
           if !@data[:image].nil?
             @data[:image_source] = image["url"]["resource"]
+            @data[:image_source_label] = I18n.t("general.image_source")
           elsif !image["url"]["resource"].empty?
             @data[:image] = image["url"]["resource"]
           end
@@ -93,16 +95,23 @@ module Onebox
         elsif arr.length > limit
           arr = arr[0..limit-2].push(limit_phrase)
         end
-        return "#{arr[0..-2].join(', ')} and #{arr.last}"
+        I18n.t("general.person_list", {
+          persons: arr[0..-2].join(I18n.t("general.person_list_separator")),
+          last_person: arr.last,
+        })
       end
 
       def join_list(arr)
         arr = arr.reject(&:nil?)
-        return arr.join(', ')
+        arr.join(I18n.t("general.list_separator"))
       end
 
       def get_mb_url(entity, mbid)
         "https://#{match[:domain]}/#{entity}/#{mbid}"
+      end
+
+      def escape_data
+        @data.map {|k, v| [k, CGI.escapeHTML(v)]}.to_h
       end
 
       module ClassMethods

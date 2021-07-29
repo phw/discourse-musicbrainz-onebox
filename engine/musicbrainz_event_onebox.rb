@@ -30,12 +30,36 @@ module Onebox
           type: raw["type"]
         }
 
+        @data[:type] = I18n.t("event.type") if @data[:type].to_s.empty?
+
         disambiguation
         life_span
         place
         performers
+        description
 
         return @data
+      end
+
+      def description
+        key = if @data[:place] && @data[:area] && @data[:lifespan]
+          "event.description_place_area_date"
+        elsif @data[:place] && @data[:area]
+          "event.description_place_area"
+        elsif @data[:place] && @data[:lifespan]
+          "event.description_place_area"
+        elsif @data[:place]
+          "event.description_place"
+        elsif @data[:area] && @data[:lifespan]
+          "event.description_area_date"
+        elsif @data[:area]
+          "event.description_area"
+        elsif @data[:lifespan]
+          "event.description_date"
+        else
+          "event.description"
+        end
+        @data[:description] = I18n.t(key, @data)
       end
 
       def place
@@ -53,7 +77,9 @@ module Onebox
           get_relations("artist", ["orchestra"]) +
           get_relations("artist", ["guest performer"])
         performers = performer_rels.map { |rel| rel["artist"]["name"] }
-        @data[:performers] = join_sentence(performers)
+        @data[:performers] = I18n.t('event.performers', {
+          performers: join_sentence(performers)
+        }) if !performers.empty?
       end
     end
   end

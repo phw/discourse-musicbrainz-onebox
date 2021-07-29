@@ -25,15 +25,32 @@ module Onebox
 
         @data = {
           link: @url,
-          title: raw["name"]
+          title: raw["name"],
+          type: raw["type"],
         }
+
+        @data[:type] = I18n.t("label.type") if @data[:type].to_s.empty?
 
         disambiguation
         area
         life_span
         image "logo"
+        description
 
         return @data
+      end
+
+      def description
+        key = if @data[:area] && @data[:lifespan]
+          "label.description_area_date"
+        elsif @data[:area]
+          "label.description_area"
+        elsif @data[:lifespan]
+          "label.description_date"
+        else
+          "label.description"
+        end
+        @data[:description] = I18n.t(key, @data)
       end
     end
   end
