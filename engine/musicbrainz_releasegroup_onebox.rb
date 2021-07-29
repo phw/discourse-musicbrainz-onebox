@@ -60,7 +60,28 @@ module Onebox
           @data[:secondary] = raw["secondary-types"].join(", ")
         end
 
+        description
+
         return @data
+      end
+
+      def description
+        key = if @data[:secondary] && @data[:artist] && @data[:date]
+          "releasegroup.description_secondary_artist_date"
+        elsif @data[:secondary] && @data[:artist]
+          "releasegroup.description_secondary_artist"
+        elsif @data[:secondary] && @data[:date]
+          "releasegroup.description_secondary_date"
+        elsif @data[:artist] && @data[:date]
+          "releasegroup.description_artist_date"
+        elsif @data[:artist]
+          "releasegroup.description_artist"
+        elsif @data[:date]
+          "releasegroup.description_date"
+        else
+          "releasegroup.description"
+        end
+        @data[:description] = I18n.t(key, @data)
       end
 
     end

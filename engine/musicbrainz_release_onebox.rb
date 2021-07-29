@@ -40,14 +40,29 @@ module Onebox
 
         artist_credits
         disambiguation
+        description
 
         caa = raw["cover-art-archive"]
         if caa && caa["artwork"] && caa["front"]
           @data[:image] = image_url
           @data[:image_source] = image_source_url
+          @data[:image_source_label] = I18n.t("general.image_source")
         end
 
         return @data
+      end
+
+      def description
+        key = if @data[:artist] && @data[:date]
+          "release.description_artist_date"
+        elsif @data[:artist]
+          "release.description_artist"
+        elsif @data[:date]
+          "release.description_date"
+        else
+          "release.description"
+        end
+        @data[:description] = I18n.t(key, @data)
       end
 
     end

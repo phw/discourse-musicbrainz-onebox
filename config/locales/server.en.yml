@@ -1,3 +1,62 @@
 en:
   site_settings:
     musicbrainz_load_wikimedia_images: "Load artist and label images from Wikimedia"
+
+  general:
+    date_range: "%{begin} – %{end}"
+    image_source: "image source"
+    list_separator: ", "
+    person_list: "%{persons} and %{last_person}"
+    person_list_separator: ", "
+
+  event:
+    description_area_date: "%{type} in %{area}, %{lifespan}"
+    description_area: "%{type} in %{area}"
+    description_date: "%{type}, %{lifespan}"
+    description_place_area_date: "%{type} at %{place} in %{area}, %{lifespan}"
+    description_place_area: "%{type} at %{place} in %{area}"
+    description_place_date: "%{type} at %{place}, %{lifespan}"
+    description_place: "%{type} at %{place}"
+    description: "%{type}"
+    performers: "Performers: %{performers}"
+    type: "Event"
+
+  label:
+    description_area_date: "%{type} from %{area}, %{lifespan}"
+    description_area: "%{type} from %{area}"
+    description_date: "%{type}, %{lifespan}"
+    description: "%{type}"
+    type: "Label"
+
+  place:
+    description_area_date: "%{type} in %{area}, %{lifespan}"
+    description_area: "%{type} in %{area}"
+    description_date: "%{type}, %{lifespan}"
+    description: "%{type}"
+    type: "Place"
+
+  recording:
+    description_artist: "%{type} by %{artist}"
+    description_work_artist: '%{type} of <a href="%{work_url}">%{work}</a> by %{artist}'
+    description_work: '%{type} of <a href="{{work_url}}">%{work}</a>'
+    description: "%{type}"
+
+  release:
+    description_artist_date: "%{status} release by %{artist}, %{date}"
+    description_artist: "%{status} release by %{artist}"
+    description_date: "%{status} release, %{date}"
+    description: "%{status}"
+
+  releasegroup:
+    description_artist_date: "%{type} by %{artist}, %{date}"
+    description_artist: "%{type} by %{artist}"
+    description_date: "%{type}, %{date}"
+    description_secondary_artist_date: "%{type} (%{secondary}) by %{artist}, %{date}"
+    description_secondary_artist: "%{type} (%{secondary}) by %{artist}"
+    description_secondary_date: "%{type} (%{secondary}), %{date}"
+    description: "%{type}"
+
+  work:
+    description_writers: "%{type} written by %{writers}"
+    description: "%{type}"
+    type: "Work"

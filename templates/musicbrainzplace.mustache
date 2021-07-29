@@ -2,7 +2,7 @@
 <figure>
   <a href="{{link}}"><img src="{{image}}" class="thumbnail"/></a>
 {{#image_source}}<figcaption>
-    <a href="{{image_source}}" class="image-source">image source</a>
+    <a href="{{image_source}}" class="image-source">{{image_source_label}}</a>
   </figcaption>{{/image_source}}
 </figure>
 {{/image}}
@@ -22,6 +22,5 @@
 </h3>
 
 <p>
-  {{type}}
-  {{#area}} in {{area}}{{/area}}{{#begin}}, opened {{begin}}{{/begin}}{{#end}}, closed {{end}}{{/end}}
+  {{description}}
 </p>
