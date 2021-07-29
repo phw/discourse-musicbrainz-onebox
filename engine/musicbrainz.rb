@@ -8,7 +8,7 @@ module Onebox
       # Reimplement JSON mixin with proper user agent
       def raw
         begin
-          @raw ||= ::MultiJson.load(open(url,
+          @raw ||= ::MultiJson.load(URI.open(url,
             "User-Agent" => "discourse-musicbrainz-onebox",
             :read_timeout => timeout
             ))

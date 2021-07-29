@@ -20,7 +20,7 @@ module Onebox
         coverart_url = nil
         begin
           api_url = "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}"
-          open(api_url,
+          URI.open(api_url,
             "User-Agent" => "discourse-musicbrainz-onebox",
             :read_timeout => timeout,
             :redirect => false
