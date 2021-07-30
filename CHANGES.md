@@ -1,9 +1,7 @@
 # 0.7.0 - 2021-??-??
-- Images are linked to their sources
 - Fixed display of label logos
-- Made all texts translatable (#3)
 - Indicate image source (CAA, Wikimedia or source domain)
-- Link release group CAA images to source release
+- Images are linked to their sources
 - Show recording duration (#14)
 
 # 0.6.0 - 2018-08-31
