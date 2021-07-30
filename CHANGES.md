@@ -3,6 +3,8 @@
 - Indicate image source (CAA, Wikimedia or source domain)
 - Images are linked to their sources
 - Show recording duration (#14)
+- Added options to enable/disable loading images from CAA and loading
+  images from other sources (e.g. label logos)
 
 # 0.6.0 - 2018-08-31
 - Do not onebox edit and history links (#8)

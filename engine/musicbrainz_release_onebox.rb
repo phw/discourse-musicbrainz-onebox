@@ -42,7 +42,7 @@ module Onebox
         disambiguation
 
         caa = raw["cover-art-archive"]
-        if caa && caa["artwork"] && caa["front"]
+        if caa && caa["artwork"] && caa["front"] && SiteSetting.musicbrainz_load_caa_images
           @data[:image] = image_url
           @data[:image_source] = image_source_url
           @data[:image_source_label] = "Cover Art Archive"

@@ -73,7 +73,7 @@ module Onebox
           if !@data[:image].nil?
             @data[:image_source] = image["url"]["resource"]
             @data[:image_source_label] = "Wikimedia"
-          elsif !image["url"]["resource"].empty?
+          elsif !image["url"]["resource"].empty? && SiteSetting.musicbrainz_load_other_images
             image_url = image["url"]["resource"]
             @data[:image] = image_url
             @data[:image_source] = image_url

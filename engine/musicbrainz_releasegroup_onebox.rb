@@ -43,6 +43,7 @@ module Onebox
       end
 
       def caa_image
+        return nil if !SiteSetting.musicbrainz_load_caa_images
         coverart_url = nil
         begin
           api_url = "https://coverartarchive.org/#{@@entity}/#{match[:mbid]}"

@@ -1,3 +1,9 @@
 plugins:
+  musicbrainz_load_caa_images:
+    default: true
+
   musicbrainz_load_wikimedia_images:
+    default: true
+
+  musicbrainz_load_other_images:
     default: true
