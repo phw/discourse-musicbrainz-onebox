@@ -26,7 +26,8 @@ module Onebox
         @data = {
           link: @url,
           id: raw["id"],
-          title: raw["title"]
+          title: raw["title"],
+          duration: format_duration,
         }
 
         artist_credits
@@ -56,6 +57,14 @@ module Onebox
         result = types.join(" ")
         result[0] = result[0].capitalize
         return result
+      end
+
+      def format_duration
+        length = Integer(raw["length"]) rescue nil
+        if length
+          length /= 1000
+          return "%02d:%02d" % [length / 60, length % 60]
+        end
       end
 
     end
