@@ -15,7 +15,7 @@ module Onebox
           name = wikimedia_image_name(url)
           return nil if name.nil?
           api_url = wikimedia_image_api_url(name)
-          result ||= ::MultiJson.load(open(api_url,
+          result ||= ::MultiJson.load(URI.open(api_url,
             "User-Agent" => "discourse-musicbrainz-onebox",
             :read_timeout => timeout))
           pages = result["query"]["pages"]
