@@ -8,14 +8,18 @@ module Onebox
       # Reimplement JSON mixin with proper user agent
       def raw
         begin
-          @raw ||= ::MultiJson.load(URI.open(url,
-            "User-Agent" => "discourse-musicbrainz-onebox",
-            :read_timeout => timeout
-            ))
+          @raw ||= request_json(url)
         rescue OpenURI::HTTPError => e
           Rails.logger.error "#{e.message}: #{url}"
           raise
         end
+      end
+
+      def request_json(url)
+        ::MultiJson.load(URI.open(url,
+          "User-Agent" => "discourse-musicbrainz-onebox",
+          :read_timeout => timeout
+          ))
       end
 
       def self.included(object)
@@ -65,10 +69,15 @@ module Onebox
         image = get_relations("url", [type]).first
         if image
           @data[:image] = wikimedia_image_url(image["url"]["resource"])
+          @data[:image_source_label] = "image source"
           if !@data[:image].nil?
             @data[:image_source] = image["url"]["resource"]
+            @data[:image_source_label] = "Wikimedia"
           elsif !image["url"]["resource"].empty?
-            @data[:image] = image["url"]["resource"]
+            image_url = image["url"]["resource"]
+            @data[:image] = image_url
+            @data[:image_source] = image_url
+            @data[:image_source_label] = URI.parse(image_url).host.downcase
           end
         end
       end

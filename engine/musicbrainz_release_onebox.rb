@@ -45,6 +45,7 @@ module Onebox
         if caa && caa["artwork"] && caa["front"]
           @data[:image] = image_url
           @data[:image_source] = image_source_url
+          @data[:image_source_label] = "Cover Art Archive"
         end
 
         return @data
