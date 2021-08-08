@@ -1,1 +1,4 @@
-{}
+site_settings:
+  musicbrainz_load_caa_images: Last inn utgivelsessbilder fra Cover Art Archive
+  musicbrainz_load_wikimedia_images: Last in artist- og plateselskapsbilder fra Wikimedia
+  musicbrainz_load_other_images: Last inn plateselskapssbilder fra andre kilder
