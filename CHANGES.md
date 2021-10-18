@@ -1,10 +1,13 @@
-# 0.7.0 - 2021-??-??
+# 0.7.0 - 2021-10-18
 - Fixed display of label logos
 - Indicate image source (CAA, Wikimedia or source domain)
 - Images are linked to their sources
 - Show recording duration (#14)
 - Added options to enable/disable loading images from CAA and loading
   images from other sources (e.g. label logos)
+- Prevent unnecessary linebreak in event box
+- Fix deprecation warning about using `open` to load HTTP resources
+- Translations for admin UI labels into German and Norwegian Bokmål
 
 # 0.6.0 - 2018-08-31
 - Do not onebox edit and history links (#8)
