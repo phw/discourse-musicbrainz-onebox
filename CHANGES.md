@@ -1,5 +1,6 @@
 # 0.8.0 - 202?-??-??
 - Show link to release group on CritiqueBrainz in release onebox
+- CritiqueBrainz links for labels and works
 - DiscID onebox
 - Series onebox
 
