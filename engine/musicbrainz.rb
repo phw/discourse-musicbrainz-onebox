@@ -80,15 +80,18 @@ module Onebox
             @data[:image_source_label] = URI.parse(image_url).host.downcase
           end
         else
-          wikidata_image()
+          wikidata_image(WIKIDATA_TYPE_IMAGE)
+          if @data[:image].nil?
+            wikidata_image(WIKIDATA_TYPE_LOGO_IMAGE)
+          end
         end
       end
 
-      def wikidata_image()
+      def wikidata_image(type)
         wikidata = get_relations("url", ["wikidata"]).first
         if wikidata
           wikidata_url = wikidata["url"]["resource"]
-          @data[:image] = wikidata_image_url(wikidata_url)
+          @data[:image] = wikidata_image_url(wikidata_url, type)
           if !@data[:image].nil?
             @data[:image_source] = wikidata_url
             @data[:image_source_label] = "Wikidata"

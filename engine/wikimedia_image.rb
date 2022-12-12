@@ -7,6 +7,7 @@ module Onebox
       WIKIDATA_URL_REGEX = /^https?:\/\/www\.wikidata\.org\/wiki\/(?<id>Q[0-9]+)/
 
       WIKIDATA_TYPE_IMAGE = "P18"
+      WIKIDATA_TYPE_LOGO_IMAGE = "P154"
 
       def wikimedia_image_url(url)
         return nil if !SiteSetting.musicbrainz_load_wikimedia_images
