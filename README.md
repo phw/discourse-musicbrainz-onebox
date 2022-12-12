@@ -3,6 +3,9 @@
 This plugin adds Onebox support for [MusicBrainz.org](https://musicbrainz.org) to [Discourse](https://www.discourse.org/).
 Use it to quickly display information about artists, releases, labels and more.
 
+This plugin is primarily used in the [MetaBrainz Community](https://community.metabrainz.org/) forums.
+
+
 ## Supported entities
 
 - [x] Artists
@@ -16,8 +19,11 @@ Use it to quickly display information about artists, releases, labels and more.
 - [x] DiscIDs
 - [ ] Series
 
+
 ## Installation
+
 Please follow this official [plugin installation how-to](https://meta.discourse.org/t/install-a-plugin/19157).
+
 
 ## License
 
