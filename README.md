@@ -17,6 +17,7 @@ This plugin is primarily used in the [MetaBrainz Community](https://community.me
 - [x] Places
 - [x] Events
 - [x] Series
+- [x] Instruments
 - [x] DiscIDs
 
 

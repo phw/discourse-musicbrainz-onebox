@@ -3,6 +3,7 @@
 - CritiqueBrainz links for labels and works
 - DiscID onebox
 - Series onebox
+- Instrument onebox
 
 # 0.7.0 - 2021-10-18
 - Fixed display of label logos
