@@ -7,6 +7,7 @@
 require 'onebox'
 
 require_relative 'engine/musicbrainz_artist_onebox'
+require_relative 'engine/musicbrainz_discid_onebox'
 require_relative 'engine/musicbrainz_event_onebox'
 require_relative 'engine/musicbrainz_label_onebox'
 require_relative 'engine/musicbrainz_place_onebox'

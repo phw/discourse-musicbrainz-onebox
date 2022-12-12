@@ -1,0 +1,33 @@
+<h3>
+  <a href="{{link}}">{{id}}</a>
+</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <th rowspan="2">Track</th>
+      <th colspan="2">Start</th>
+      <th colspan="2">Length</th>
+      <th colspan="2">End</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th>Sectors</th>
+      <th>Time</th>
+      <th>Sectors</th>
+      <th>Time</th>
+      <th>Sectors</th>
+    </tr>
+    {{#tracks}}
+    <tr>
+      <td>{{track}}</td>
+      <td>{{start_time}}</td>
+      <td>{{start_sector}}</td>
+      <td>{{length_time}}</td>
+      <td>{{length_sector}}</td>
+      <td>{{end_time}}</td>
+      <td>{{end_sector}}</td>
+    </tr>
+    {{/tracks}}
+  </tbody>
+</table>
