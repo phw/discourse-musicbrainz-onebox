@@ -1,10 +1,11 @@
-# 0.8.0 - 202?-??-??
-- Show link to release group on CritiqueBrainz in release onebox
-- CritiqueBrainz links for labels and works
-- DiscID onebox
-- Series onebox
+# 0.8.0 - 2022-12-12
+- Show link to release group on CritiqueBrainz in release onebox (#17)
+- CritiqueBrainz links for labels and works (#17)
+- DiscID onebox (#12)
+- Series onebox (#11)
 - Instrument onebox
 - Use Wikidata to load images, if loading images from Wikimedia is activated
+- Updated admin UI translation for Norwegian Bokmål
 
 # 0.7.0 - 2021-10-18
 - Fixed display of label logos
