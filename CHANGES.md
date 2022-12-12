@@ -1,3 +1,6 @@
+# 0.8.0 - 202?-??-??
+- Show link to release group on CirtiqueBrainz in release onebox
+
 # 0.7.0 - 2021-10-18
 - Fixed display of label logos
 - Indicate image source (CAA, Wikimedia or source domain)

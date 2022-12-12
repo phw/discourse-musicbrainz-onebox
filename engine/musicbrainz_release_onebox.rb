@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups"
       end
 
       def image_url
@@ -37,6 +37,10 @@ module Onebox
           status: raw["status"],
           date: raw["date"]
         }
+
+        if raw["release-group"]
+          @data["releasegroup_id"] = raw["release-group"]["id"]
+        end
 
         artist_credits
         disambiguation
