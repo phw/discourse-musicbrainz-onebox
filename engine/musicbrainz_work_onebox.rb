@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-rels+url-rels"
       end
 
       def match
@@ -34,6 +34,7 @@ module Onebox
         @data[:type] = "Work" if @data[:type].to_s.empty?
 
         disambiguation
+        image
 
         return @data
       end

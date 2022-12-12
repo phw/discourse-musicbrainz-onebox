@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=place-rels+artist-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=place-rels+artist-rels+url-rels"
       end
 
       def match
@@ -32,6 +32,7 @@ module Onebox
 
         disambiguation
         life_span
+        image
         place
         performers
 

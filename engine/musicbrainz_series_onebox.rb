@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels"
       end
 
       def match
@@ -31,6 +31,7 @@ module Onebox
         }
 
         disambiguation
+        image
 
         return @data
       end

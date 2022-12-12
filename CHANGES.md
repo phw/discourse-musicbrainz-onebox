@@ -4,6 +4,7 @@
 - DiscID onebox
 - Series onebox
 - Instrument onebox
+- Use Wikidata to load images, if loading images from Wikimedia is activated
 
 # 0.7.0 - 2021-10-18
 - Fixed display of label logos
