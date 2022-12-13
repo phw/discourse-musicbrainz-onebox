@@ -34,6 +34,7 @@ module Onebox
         artist_credits
         disambiguation
         caa_image
+        wikidata
 
         if raw["secondary-types"] && !raw["secondary-types"].empty?
           @data[:secondary] = raw["secondary-types"].join(", ")

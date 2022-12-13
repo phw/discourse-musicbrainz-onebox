@@ -34,6 +34,7 @@ module Onebox
         area
         life_span
         image
+        wikidata
 
         data[:description] = join_list [
           data[:type],

@@ -30,19 +30,22 @@ module Onebox
         return match[:name] if match
       end
 
-      def wikidata_image_url(url, type=WIKIDATA_TYPE_IMAGE)
+      def wikidata_data(url)
+        id = wikidata_id(url)
+        return nil if id.nil?
+        api_url = wikidata_api_url(id)
+        result ||= ::MultiJson.load(URI.open(api_url,
+          "User-Agent" => "discourse-musicbrainz-onebox",
+          :read_timeout => timeout))
+        result["entities"][id] if !result.nil?
+      end
+
+      def wikidata_image_url(data, type=WIKIDATA_TYPE_IMAGE)
         return nil if !SiteSetting.musicbrainz_load_wikimedia_images
+        return nil if data.nil?
         begin
-          id = wikidata_id(url)
-          return nil if id.nil?
-          api_url = wikidata_api_url(id)
-          result ||= ::MultiJson.load(URI.open(api_url,
-            "User-Agent" => "discourse-musicbrainz-onebox",
-            :read_timeout => timeout))
-          entity = result["entities"][id]
-          return nil if entity.nil?
-          images = entity["claims"][type]
-          return nil if images.nil? || images.empty?
+          images = data["claims"][type]
+          return nil if images.nil?
           first_image = images.find do |i|
             i["mainsnak"]["datatype"] = "commonsMedia"
           end

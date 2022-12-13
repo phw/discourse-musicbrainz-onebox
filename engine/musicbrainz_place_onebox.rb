@@ -34,6 +34,7 @@ module Onebox
         area
         life_span
         image
+        wikidata
 
         return @data
       end

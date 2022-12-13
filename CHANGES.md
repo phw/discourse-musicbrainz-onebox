@@ -1,5 +1,6 @@
 # 0.?.? - 202?-??-??
 - CritiqueBrainz links for recordings
+- Show Wikipedia link for all entities, if available
 
 # 0.8.0 - 2022-12-12
 - Show link to release group on CritiqueBrainz in release onebox (#17)

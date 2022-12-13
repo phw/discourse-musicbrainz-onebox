@@ -33,6 +33,7 @@ module Onebox
         area
         life_span
         image "logo"
+        wikidata
 
         return @data
       end

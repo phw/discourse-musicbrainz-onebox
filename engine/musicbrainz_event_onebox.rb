@@ -33,6 +33,7 @@ module Onebox
         disambiguation
         life_span
         image
+        wikidata
         place
         performers
 

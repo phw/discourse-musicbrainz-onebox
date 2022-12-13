@@ -32,6 +32,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        wikidata
 
         types = []
         primary_type = (raw["video"] ? "video" : "recording")

@@ -44,6 +44,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        wikidata
 
         caa = raw["cover-art-archive"]
         if caa && caa["artwork"] && caa["front"] && SiteSetting.musicbrainz_load_caa_images
