@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=url-rels+genres"
       end
 
       def match
@@ -33,6 +33,7 @@ module Onebox
         disambiguation
         area
         life_span
+        genres
         add_critiquebrainz_link
         image
         wikidata

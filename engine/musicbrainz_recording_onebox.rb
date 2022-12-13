@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+work-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+work-rels+genres"
       end
 
       def match
@@ -32,6 +32,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        genres
         add_critiquebrainz_link
         wikidata
 

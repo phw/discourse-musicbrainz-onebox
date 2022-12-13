@@ -65,6 +65,16 @@ module Onebox
         end
       end
 
+      def genres(entity=nil)
+        entity = raw if entity.nil?
+        if entity["genres"]
+          genres = entity["genres"].sort_by { |g| -g["count"] }.map { |g| g["name"] }
+          if !genres.empty?
+            @data[:genres] = join_list(genres, SiteSetting.musicbrainz_genre_limit)
+          end
+        end
+      end
+
       def image(type="image")
         image = get_relations("url", [type]).first
         if image
@@ -152,13 +162,16 @@ module Onebox
         elsif arr.length == 1
           return arr[0]
         elsif arr.length > limit
-          arr = arr[0..limit-2].push(limit_phrase)
+          arr = arr[0..limit-1].push(limit_phrase)
         end
         return "#{arr[0..-2].join(', ')} and #{arr.last}"
       end
 
-      def join_list(arr)
+      def join_list(arr, limit=nil, limit_phrase="…")
         arr = arr.reject(&:nil?)
+        if limit and arr.length > limit
+          arr = arr[0..limit-1].push(limit_phrase)
+        end
         return arr.join(', ')
       end
 

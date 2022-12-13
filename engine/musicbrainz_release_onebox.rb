@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups+genres"
       end
 
       def image_url
@@ -38,13 +38,15 @@ module Onebox
           date: raw["date"]
         }
 
-        if raw["release-group"]
-          add_critiquebrainz_link(raw["release-group"]["id"], "release-group")
-        end
-
         artist_credits
         disambiguation
+        genres
         wikidata
+
+        if raw["release-group"]
+          add_critiquebrainz_link(raw["release-group"]["id"], "release-group")
+          genres raw["release-group"] if !@data[:genres]
+        end
 
         caa = raw["cover-art-archive"]
         if caa && caa["artwork"] && caa["front"] && SiteSetting.musicbrainz_load_caa_images

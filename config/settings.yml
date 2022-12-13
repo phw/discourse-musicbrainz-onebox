@@ -10,3 +10,6 @@ plugins:
 
   musicbrainz_show_wikipedia_link:
     default: true
+
+  musicbrainz_genre_limit:
+    default: 5
