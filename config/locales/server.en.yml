@@ -3,3 +3,4 @@ en:
     musicbrainz_load_caa_images: "Load release images from Cover Art Archive"
     musicbrainz_load_wikimedia_images: "Load artist and label images from Wikimedia"
     musicbrainz_load_other_images: "Load label logos from other sources"
+    musicbrainz_show_wikipedia_link: "Show Links to Wikipedia"

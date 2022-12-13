@@ -83,21 +83,27 @@ module Onebox
       end
 
       def wikidata()
+        return nil if !wikidata_allowed
         wikidata = get_relations("url", ["wikidata"]).first
         return nil if wikidata.nil?
         url = wikidata["url"]["resource"]
         data = wikidata_data(url)
-        wiki = data["sitelinks"]["enwiki"]
-        if wiki
-          add_external_link(
-            :url => wiki["url"],
-            :icon => "wikipedia.png",
-            :title => wiki["title"],
-            :alt => "W",
-          )
+        if SiteSetting.musicbrainz_show_wikipedia_link
+          wiki = data["sitelinks"]["enwiki"]
+          if wiki
+            add_external_link(
+              :url => wiki["url"],
+              :icon => "wikipedia.png",
+              :title => wiki["title"],
+              :alt => "W",
+            )
+          end
         end
-        wikidata_image(data, url, WIKIDATA_TYPE_IMAGE) if @data[:image].nil?
-        wikidata_image(data, url, WIKIDATA_TYPE_LOGO_IMAGE) if @data[:image].nil?
+
+        if SiteSetting.musicbrainz_load_wikimedia_images
+          wikidata_image(url, data, WIKIDATA_TYPE_IMAGE) if @data[:image].nil?
+          wikidata_image(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if @data[:image].nil?
+        end
       end
 
       def wikidata_image(url, data, type)
@@ -106,6 +112,10 @@ module Onebox
           @data[:image_source] = url
           @data[:image_source_label] = "Wikidata"
         end
+      end
+
+      def wikidata_allowed
+        SiteSetting.musicbrainz_show_wikipedia_link || SiteSetting.musicbrainz_load_wikimedia_images
       end
 
       def add_external_link(link)

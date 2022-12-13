@@ -3,3 +3,4 @@ de:
     musicbrainz_load_caa_images: "Veröffentlichungs-Bilder von Cover Art Archive laden"
     musicbrainz_load_wikimedia_images: "Künstler- und Label-Bilder von Wikimedia laden"
     musicbrainz_load_other_images: "Label-Logos von anderen Quellen laden"
+    musicbrainz_show_wikipedia_link: "Link zu Wikipedia anzeigen"

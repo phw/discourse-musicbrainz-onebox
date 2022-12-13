@@ -7,3 +7,6 @@ plugins:
 
   musicbrainz_load_other_images:
     default: true
+
+  musicbrainz_show_wikipedia_link:
+    default: true
