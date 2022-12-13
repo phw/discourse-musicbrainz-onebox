@@ -1,4 +1,4 @@
-# 0.?.? - 202?-??-??
+# 0.9.0 - 2022-12-13
 - CritiqueBrainz links for recordings
 - Show Wikipedia link for all entities, if available
 - Removed AcousticBrainz link (#18)
