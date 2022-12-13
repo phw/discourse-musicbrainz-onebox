@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups+genres"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups+media+genres"
       end
 
       def image_url
@@ -40,6 +40,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        media_info
         genres
         wikidata
 
@@ -58,6 +59,15 @@ module Onebox
         return @data
       end
 
+      def media_info
+        media = Hash.new(0)
+        raw["media"].each do |m|
+          media[m["format"]] += 1
+        end
+        @data[:media] = join_list(media.map do |medium, count|
+          count > 1 ? "#{count}×#{medium}" : medium
+        end)
+      end
     end
   end
 end
