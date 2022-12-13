@@ -47,7 +47,7 @@ module Onebox
 
       def format_as_time(sectors)
         seconds = (sectors.to_f / 75).round
-        "%02i:%02i" % [seconds / 60, seconds % 60]
+        format_seconds(seconds)
       end
     end
   end

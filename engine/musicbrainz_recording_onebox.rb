@@ -66,7 +66,7 @@ module Onebox
         length = Integer(raw["length"]) rescue nil
         if length
           length /= 1000
-          return "%02d:%02d" % [length / 60, length % 60]
+          return format_seconds(length)
         end
       end
 

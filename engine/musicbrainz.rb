@@ -179,6 +179,10 @@ module Onebox
         "https://#{match[:domain]}/#{entity}/#{mbid}"
       end
 
+      def format_seconds(seconds)
+        "%02d:%02d" % [seconds / 60, seconds % 60]
+      end
+
       module ClassMethods
         def matches_entity(entity)
           class_variable_set :@@entity, entity
