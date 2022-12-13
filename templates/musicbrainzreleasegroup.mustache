@@ -8,16 +8,12 @@
 {{/image}}
 
 <div class="external-links">
-  <a href="https://critiquebrainz.org/release-group/{{id}}">
-    <img src="/plugins/musicbrainz-onebox/images/critiquebrainz.png"
-      alt="CB" title="CritiqueBrainz">
-  </a>
-  {{#wikipedia_url}}
-    <a href="{{wikipedia_url}}">
-      <img src="/plugins/musicbrainz-onebox/images/wikipedia.png"
-        alt="W" title="{{wikipedia_title}}" width="16" height="16">
+  {{#external_links}}
+    <a href="{{url}}">
+      <img src="/plugins/musicbrainz-onebox/images/{{icon}}"
+        alt="{{alt}}" title="{{title}}" width="16" height="16">
     </a>
-  {{/wikipedia_url}}
+  {{/external_links}}
 </div>
 
 <h3>

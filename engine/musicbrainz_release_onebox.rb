@@ -39,7 +39,7 @@ module Onebox
         }
 
         if raw["release-group"]
-          @data["releasegroup_id"] = raw["release-group"]["id"]
+          add_critiquebrainz_link(raw["release-group"]["id"], "release-group")
         end
 
         artist_credits

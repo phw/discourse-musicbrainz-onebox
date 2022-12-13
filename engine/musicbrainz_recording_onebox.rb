@@ -32,6 +32,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        add_critiquebrainz_link
         wikidata
 
         types = []

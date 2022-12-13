@@ -32,6 +32,7 @@ module Onebox
 
         disambiguation
         life_span
+        add_critiquebrainz_link
         image
         wikidata
         place

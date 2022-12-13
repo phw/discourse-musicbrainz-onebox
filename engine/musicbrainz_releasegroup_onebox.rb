@@ -33,6 +33,7 @@ module Onebox
 
         artist_credits
         disambiguation
+        add_critiquebrainz_link
         caa_image
         wikidata
 

@@ -8,10 +8,12 @@
 {{/image}}
 
 <div class="external-links">
-  <a href="https://critiquebrainz.org/work/{{id}}">
-    <img src="/plugins/musicbrainz-onebox/images/critiquebrainz.png"
-      alt="CB" title="CritiqueBrainz">
-  </a>
+  {{#external_links}}
+    <a href="{{url}}">
+      <img src="/plugins/musicbrainz-onebox/images/{{icon}}"
+        alt="{{alt}}" title="{{title}}" width="16" height="16">
+    </a>
+  {{/external_links}}
 </div>
 
 <h3>

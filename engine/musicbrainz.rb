@@ -89,8 +89,12 @@ module Onebox
         data = wikidata_data(url)
         wiki = data["sitelinks"]["enwiki"]
         if wiki
-          @data[:wikipedia_url] = wiki["url"]
-          @data[:wikipedia_title] = wiki["title"]
+          add_external_link(
+            :url => wiki["url"],
+            :icon => "wikipedia.png",
+            :title => wiki["title"],
+            :alt => "W",
+          )
         end
         wikidata_image(data, url, WIKIDATA_TYPE_IMAGE) if @data[:image].nil?
         wikidata_image(data, url, WIKIDATA_TYPE_LOGO_IMAGE) if @data[:image].nil?
@@ -102,6 +106,22 @@ module Onebox
           @data[:image_source] = url
           @data[:image_source_label] = "Wikidata"
         end
+      end
+
+      def add_external_link(link)
+        @data[:external_links] = [] if @data[:external_links].nil?
+        @data[:external_links].push link
+      end
+
+      def add_critiquebrainz_link(id=nil, entity=nil)
+        id = @data[:id] if id.nil?
+        entity = self.class.entity if entity.nil?
+        add_external_link(
+          :url => "https://critiquebrainz.org/#{entity}/#{id}",
+          :icon => "critiquebrainz.png",
+          :title => "CritiqueBrainz",
+          :alt => "CB",
+        )
       end
 
       # General helper functions
@@ -140,6 +160,10 @@ module Onebox
         def matches_entity(entity)
           class_variable_set :@@entity, entity
           matches_regexp(/^https?:\/\/(?<domain>(?:beta\.)?musicbrainz\.org)\/#{Regexp.escape(entity)}\/(?<mbid>[0-9a-z-]{36})(?!\/(?:edit|open_edits))/)
+        end
+
+        def entity
+          class_variable_get :@@entity
         end
       end
 
