@@ -27,7 +27,8 @@ module Onebox
           link: @url,
           id: raw["id"],
           title: raw["name"].capitalize,
-          type: raw["type"]
+          type: raw["type"],
+          description: raw["description"],
         }
 
         disambiguation
