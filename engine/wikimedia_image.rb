@@ -1,6 +1,10 @@
+require_relative "request_helper"
+
 module Onebox
   module Mixins
     module WikimediaImage
+      include Onebox::Mixins::JsonRequestHelper
+
       private
 
       WIKIMEDIA_URL_REGEX = /^https?:\/\/commons\.wikimedia\.org\/wiki\/(?<name>File:.+)/
@@ -34,9 +38,7 @@ module Onebox
         id = wikidata_id(url)
         return nil if id.nil?
         api_url = wikidata_api_url(id)
-        result ||= ::MultiJson.load(URI.open(api_url,
-          "User-Agent" => "discourse-musicbrainz-onebox",
-          :read_timeout => timeout))
+        result ||= request_json(api_url)
         result["entities"][id] if !result.nil?
       end
 
@@ -67,13 +69,9 @@ module Onebox
         return match[:id] if match
       end
 
-      private
-
       def load_wikimedia_image(name)
         api_url = wikimedia_image_api_url(name)
-        result ||= ::MultiJson.load(URI.open(api_url,
-          "User-Agent" => "discourse-musicbrainz-onebox",
-          :read_timeout => timeout))
+        result ||= request_json(api_url)
         pages = result["query"]["pages"]
         return pages.first[1]["imageinfo"].first["url"]
       end

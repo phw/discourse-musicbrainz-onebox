@@ -1,8 +1,10 @@
+require_relative "request_helper"
 require_relative "wikimedia_image"
 
 module Onebox
   module Engine
     module MusicBrainz
+      include Onebox::Mixins::JsonRequestHelper
       include Onebox::Mixins::WikimediaImage
 
       # Reimplement JSON mixin with proper user agent
@@ -13,13 +15,6 @@ module Onebox
           Rails.logger.error "#{e.message}: #{url}"
           raise
         end
-      end
-
-      def request_json(url)
-        ::MultiJson.load(URI.open(url,
-          "User-Agent" => "discourse-musicbrainz-onebox",
-          :read_timeout => timeout
-          ))
       end
 
       def self.included(object)
