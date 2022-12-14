@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-rels+url-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-rels+url-rels+work-rels"
       end
 
       def match
@@ -28,7 +28,6 @@ module Onebox
           id: raw["id"],
           title: raw["title"],
           type: raw["type"],
-          writers: written_by
         }
 
         @data[:type] = "Work" if @data[:type].to_s.empty?
@@ -37,6 +36,8 @@ module Onebox
         add_critiquebrainz_link
         image
         wikidata
+        written_by
+        parent_work
 
         return @data
       end
@@ -44,7 +45,14 @@ module Onebox
       def written_by
         writers = get_relations(
           "artist", ["writer", "lyricist", "composer", "librettist"], "backward")
-        join_sentence(writers.map { |rel| rel["artist"]["name"] })
+        @data[:writers] = join_sentence(writers.map { |rel| rel["artist"]["name"] })
+      end
+
+      def parent_work
+        parent = get_relations("work", ["parts"], "backward").first
+        return if parent.nil?
+        @data[:parent_work] = parent["work"]["title"]
+        @data[:parent_work_url] = get_mb_url("work", parent["work"]["id"])
       end
 
     end

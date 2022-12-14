@@ -25,4 +25,7 @@
 
 <p>
   {{type}}{{#writers}} written by {{writers}}{{/writers}}
+  {{#parent_work}}
+  <br>Part of <a href="{{parent_work_url}}">{{parent_work}}</a>
+  {{/parent_work}}
 </p>

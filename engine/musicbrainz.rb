@@ -145,11 +145,11 @@ module Onebox
       end
 
       # General helper functions
-      def get_relations(targetEntity, types, direction=nil)
+      def get_relations(target_entity, types, direction=nil)
         return [] if !raw["relations"]
 
         return raw["relations"].select do |rel|
-          rel["target-type"] == targetEntity &&
+          rel["target-type"] == target_entity &&
             types.include?(rel["type"]) &&
             (direction.nil? || rel["direction"] == direction)
         end
