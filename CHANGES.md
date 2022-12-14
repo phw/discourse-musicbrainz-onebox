@@ -1,6 +1,7 @@
-# 0.10.0 -2022-12-??
+# 0.10.0 -2022-12-14
 - Show total track count for releases
 - Show parent work for works
+- Add some margin between external links and text content
 
 # 0.9.0 - 2022-12-13
 - CritiqueBrainz links for recordings
