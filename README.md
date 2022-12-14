@@ -23,7 +23,7 @@ This plugin is primarily used in the [MetaBrainz Community](https://community.me
 
 ## Installation
 
-Please follow this official [plugin installation how-to](https://meta.discourse.org/t/install-a-plugin/19157).
+Please follow this official [plugin installation how-to](https://meta.discourse.org/t/install-a-plugin/19157). Use `https://github.com/phw/discourse-musicbrainz-onebox.git` as the git clone URL.
 
 
 ## License
