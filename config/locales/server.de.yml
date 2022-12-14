@@ -1,7 +1,7 @@
 de:
   site_settings:
-    musicbrainz_load_caa_images: "Veröffentlichungs-Bilder von Cover Art Archive laden"
-    musicbrainz_load_wikimedia_images: "Künstler- und Label-Bilder von Wikimedia laden"
-    musicbrainz_load_other_images: "Label-Logos von anderen Quellen laden"
+    musicbrainz_load_caa_images: "Bilder von Cover Art Archive laden"
+    musicbrainz_load_wikimedia_images: "Bilder von Wikimedia laden"
+    musicbrainz_load_other_images: "Bilder von anderen Quellen laden"
     musicbrainz_show_wikipedia_link: "Link zu Wikipedia anzeigen"
     musicbrainz_genre_limit: "Maximale Anzahl anzuzeigender Genres"
