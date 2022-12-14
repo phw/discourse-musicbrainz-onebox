@@ -1,4 +1,7 @@
-# 0.10.0 -2022-12-14
+# 0.11 - 202?-??-??
+- Show instrument description
+
+# 0.10.0 - 2022-12-14
 - Show total track count for releases
 - Show parent work for works
 - Add some margin between external links and text content
