@@ -1,3 +1,6 @@
+# 0.10.0 -2022-12-??
+- Show total track count for releases
+
 # 0.9.0 - 2022-12-13
 - CritiqueBrainz links for recordings
 - Show Wikipedia link for all entities, if available

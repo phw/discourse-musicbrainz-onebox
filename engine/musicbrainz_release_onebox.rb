@@ -61,12 +61,16 @@ module Onebox
 
       def media_info
         media = Hash.new(0)
+        totaltracks = 0
         raw["media"].each do |m|
           media[m["format"]] += 1
+          totaltracks += m["track-count"] || 0
         end
         @data[:media] = join_list(media.map do |medium, count|
           count > 1 ? "#{count}×#{medium}" : medium
         end)
+        @data[:totaltracks] = totaltracks if totaltracks > 0
+        puts "totaltracks #{totaltracks} - #{@data[:totaltracks]}"
       end
     end
   end
