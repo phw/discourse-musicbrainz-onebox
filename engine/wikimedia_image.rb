@@ -1,3 +1,4 @@
+require "cgi"
 require_relative "request_helper"
 
 module Onebox
@@ -46,14 +47,14 @@ module Onebox
         return nil if !SiteSetting.musicbrainz_load_wikimedia_images
         return nil if data.nil?
         begin
-          images = data["claims"][type]
+          images = data.dig("claims", type)
           return nil if images.nil?
           first_image = images.find do |i|
             i.dig("mainsnak", "datatype") == "commonsMedia"
           end
           return nil if first_image.nil?
           name = first_image.dig("mainsnak", "datavalue", "value")
-          return load_wikimedia_image("File:" + name.gsub(/\s/, "_"))
+          return load_wikimedia_image(wikimedia_file_name(name))
         rescue Exception => e
           Rails.logger.error e.message
           return nil
@@ -74,6 +75,10 @@ module Onebox
         result ||= request_json(api_url)
         page = result.dig("query", "pages")&.first&.[](1)
         return page["imageinfo"]&.first&.dig("url")
+      end
+
+      def wikimedia_file_name(name)
+        "File:" + CGI.escape(name.gsub(/\s/, "_"))
       end
     end
   end

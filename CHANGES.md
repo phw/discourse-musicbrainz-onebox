@@ -2,6 +2,7 @@
 - Load release group image for releases without cover art
 - Load Wikidata data from release group if missing in release
 - Render track counts on releases with thousands separator
+- Fixed loading Wikimedia images with non-ASCII characters in file name
 
 # 0.11.1 - 2022-12-15
 - Fixed selection of first Wikimedia Commons picture
