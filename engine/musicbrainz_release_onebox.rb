@@ -45,10 +45,12 @@ module Onebox
         caa_image
         wikidata
 
-        if raw["release-group"]
-          add_critiquebrainz_link(raw["release-group"]["id"], "release-group")
-          genres(raw["release-group"]) if !@data[:genres]
-          wikidata(raw["release-group"])
+        release_group = raw["release-group"]
+        if release_group
+          add_critiquebrainz_link(release_group["id"], "release-group")
+          genres(release_group) if !@data[:genres]
+          caa_rg_image(release_group["id"]) if !@data[:image]
+          wikidata(release_group)
         end
 
         return @data

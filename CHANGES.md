@@ -1,4 +1,5 @@
 # 0.12 - 202?-??-??
+- Load release group image for releases without cover art
 - Load Wikidata data from release group if missing in release
 - Render track counts on releases with thousands separator
 
