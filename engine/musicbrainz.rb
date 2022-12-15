@@ -46,7 +46,7 @@ module Onebox
 
           @data[:lifespan] = @data[:begin]
           if @data[:end]
-            @data[:lifespan] += "– #{@data[:end]}"
+            @data[:lifespan] += " – #{@data[:end]}"
           end
         end
       end
