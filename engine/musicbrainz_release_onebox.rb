@@ -70,7 +70,6 @@ module Onebox
           count > 1 ? "#{count}×#{medium}" : medium
         end)
         @data[:totaltracks] = totaltracks if totaltracks > 0
-        puts "totaltracks #{totaltracks} - #{@data[:totaltracks]}"
       end
     end
   end

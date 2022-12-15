@@ -50,7 +50,6 @@ module Onebox
 
       def parent_work
         parent = get_relations("work", ["parts"], "backward").first
-        puts "PARENT_WORK", parent, @raw
         return if parent.nil?
         @data[:parent_work] = parent.dig("work", "title")
         @data[:parent_work_url] = get_mb_url("work", parent.dig("work", "id"))
