@@ -1,4 +1,5 @@
 # 0.12 - 202?-??-??
+- Load Wikidata data from release group if missing in release
 - Render track counts on releases with thousands separator
 
 # 0.11.1 - 2022-12-15

@@ -87,15 +87,16 @@ module Onebox
         end
       end
 
-      def wikidata()
-        return nil if !wikidata_allowed
-        wikidata = get_relations("url", ["wikidata"]).first
-        return nil if wikidata.nil?
-        url = wikidata["url"]["resource"]
+      def wikidata(entity=nil)
+        return nil if !wikidata_allowed?
+        wikidata_rel = get_relations("url", ["wikidata"], entity: entity).first
+        return nil if wikidata_rel.nil?
+        url = wikidata_rel.dig("url", "resource")
         data = wikidata_data(url)
-        if SiteSetting.musicbrainz_show_wikipedia_link
+        if SiteSetting.musicbrainz_show_wikipedia_link && !@data[:has_wiki_link]
           wiki = data.dig("sitelinks", "enwiki")
           if wiki
+            @data[:has_wiki_link] = true
             add_external_link(
               :url => wiki["url"],
               :icon => "wikipedia.png",
@@ -106,8 +107,8 @@ module Onebox
         end
 
         if SiteSetting.musicbrainz_load_wikimedia_images
-          wikidata_image(url, data, WIKIDATA_TYPE_IMAGE) if @data[:image].nil?
-          wikidata_image(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if @data[:image].nil?
+          wikidata_image(url, data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
+          wikidata_image(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
         end
       end
 
@@ -119,8 +120,9 @@ module Onebox
         end
       end
 
-      def wikidata_allowed
-        SiteSetting.musicbrainz_show_wikipedia_link || SiteSetting.musicbrainz_load_wikimedia_images
+      def wikidata_allowed?
+        (SiteSetting.musicbrainz_show_wikipedia_link && !@data[:has_wiki_link]) ||
+        (SiteSetting.musicbrainz_load_wikimedia_images && !@data[:image])
       end
 
       def add_external_link(link)
@@ -140,10 +142,11 @@ module Onebox
       end
 
       # General helper functions
-      def get_relations(target_entity, types, direction=nil)
-        return [] if !raw["relations"]
+      def get_relations(target_entity, types, direction: nil, entity: nil)
+        entity = raw if entity.nil?
+        return [] if !entity["relations"]
 
-        return raw["relations"].select do |rel|
+        return entity["relations"].select do |rel|
           rel["target-type"] == target_entity &&
             types.include?(rel["type"]) &&
             (direction.nil? || rel["direction"] == direction)

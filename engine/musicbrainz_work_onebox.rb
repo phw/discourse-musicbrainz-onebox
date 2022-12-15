@@ -44,12 +44,12 @@ module Onebox
 
       def written_by
         writers = get_relations(
-          "artist", ["writer", "lyricist", "composer", "librettist"], "backward")
+          "artist", ["writer", "lyricist", "composer", "librettist"], direction: "backward")
         @data[:writers] = join_sentence(writers.map { |rel| rel.dig("artist", "name") })
       end
 
       def parent_work
-        parent = get_relations("work", ["parts"], "backward").first
+        parent = get_relations("work", ["parts"], direction: "backward").first
         return if parent.nil?
         @data[:parent_work] = parent.dig("work", "title")
         @data[:parent_work_url] = get_mb_url("work", parent.dig("work", "id"))

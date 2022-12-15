@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups+media+genres+url-rels"
+        "https://#{match[:domain]}/ws/2/#{@@entity}/#{match[:mbid]}?fmt=json&inc=artist-credits+release-groups+media+genres+url-rels+release-group-level-rels"
       end
 
       def image_url
@@ -42,18 +42,13 @@ module Onebox
         disambiguation
         media_info
         genres
+        caa_image
         wikidata
 
         if raw["release-group"]
           add_critiquebrainz_link(raw["release-group"]["id"], "release-group")
-          genres raw["release-group"] if !@data[:genres]
-        end
-
-        caa = raw["cover-art-archive"]
-        if caa && caa["artwork"] && caa["front"] && SiteSetting.musicbrainz_load_caa_images
-          @data[:image] = image_url
-          @data[:image_source] = image_source_url
-          @data[:image_source_label] = "Cover Art Archive"
+          genres(raw["release-group"]) if !@data[:genres]
+          wikidata(raw["release-group"])
         end
 
         return @data
@@ -70,6 +65,15 @@ module Onebox
           count > 1 ? "#{format_number(count)}×#{medium}" : medium
         end)
         @data[:totaltracks] = format_number(totaltracks) if totaltracks > 0
+      end
+
+      def caa_image
+        caa = raw["cover-art-archive"]
+        if caa && caa["artwork"] && caa["front"] && SiteSetting.musicbrainz_load_caa_images
+          @data[:image] = image_url
+          @data[:image_source] = image_source_url
+          @data[:image_source_label] = "Cover Art Archive"
+        end
       end
     end
   end
