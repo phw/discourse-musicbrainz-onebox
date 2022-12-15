@@ -1,6 +1,7 @@
 # 0.11.1 - 2022-12-??
 - Fixed selection of first Wikimedia Commons picture
 - Fixed life-span formatting with end date
+- Fixed loading release group images from CAA
 
 # 0.11 - 2022-12-15
 - Show instrument description

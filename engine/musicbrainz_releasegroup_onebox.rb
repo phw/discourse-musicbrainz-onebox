@@ -54,7 +54,11 @@ module Onebox
 
           image = result["images"][0] if result["images"]
           if image && image["thumbnails"]
-            @data[:image] = image["thumbnails"]["500"] || image["thumbnails"]["250"]
+            thumbnails = image["thumbnails"]
+            @data[:image] = thumbnails["500"] ||
+              thumbnails["large"] ||
+              thumbnails["250"] ||
+              thumbnails["small"]
             @data[:image_source] = result["release"]
             @data[:image_source_label] = "Cover Art Archive"
           end
