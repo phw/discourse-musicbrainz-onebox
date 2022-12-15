@@ -137,6 +137,8 @@ module Onebox
           wikidata_image(url, data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
           wikidata_image(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
         end
+
+        data
       end
 
       def wikidata_image(url, data, type)

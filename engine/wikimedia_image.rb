@@ -13,6 +13,7 @@ module Onebox
 
       WIKIDATA_TYPE_IMAGE = "P18"
       WIKIDATA_TYPE_LOGO_IMAGE = "P154"
+      WIKIDATA_TYPE_UNICODE_CHARACTER = "P487"
 
       def wikimedia_image_url(url)
         return nil if !SiteSetting.musicbrainz_load_wikimedia_images
