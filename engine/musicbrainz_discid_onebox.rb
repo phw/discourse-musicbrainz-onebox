@@ -13,7 +13,7 @@ module Onebox
       private
 
       def url
-        "https://#{match[:domain]}/ws/2/discid/#{match[:discid]}?fmt=json&inc="
+        "https://#{match[:domain]}/ws/2/discid/#{match[:discid]}?fmt=json"
       end
 
       def match

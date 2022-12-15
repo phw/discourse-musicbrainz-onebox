@@ -40,7 +40,7 @@ module Onebox
         wikidata_wikilink
 
         if raw["secondary-types"] && !raw["secondary-types"].empty?
-          @data[:secondary] = raw["secondary-types"].join(", ")
+          @data[:secondary] = join_list(raw["secondary-types"])
         end
 
         return @data

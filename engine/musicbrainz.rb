@@ -31,7 +31,7 @@ module Onebox
       end
 
       def area
-        @data[:area] = raw.dig("area", "name") if raw["area"]
+        @data[:area] = raw.dig("area", "name")
       end
 
       def life_span
@@ -213,7 +213,7 @@ module Onebox
         if limit and arr.length > limit
           arr = arr[0..limit-1].push(limit_phrase)
         end
-        return arr.join(', ')
+        return arr.join(", ")
       end
 
       def get_mb_url(entity, mbid)
