@@ -49,7 +49,7 @@ module Onebox
           images = data["claims"][type]
           return nil if images.nil?
           first_image = images.find do |i|
-            i["mainsnak"]["datatype"] = "commonsMedia"
+            i.dig("mainsnak", "datatype") == "commonsMedia"
           end
           return nil if first_image.nil?
           name = first_image["mainsnak"]["datavalue"]["value"]
