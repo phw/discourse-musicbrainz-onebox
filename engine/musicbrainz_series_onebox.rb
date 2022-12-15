@@ -32,7 +32,8 @@ module Onebox
 
         disambiguation
         image
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         return @data
       end

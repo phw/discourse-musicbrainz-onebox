@@ -32,16 +32,16 @@ module Onebox
 
         disambiguation
         life_span
-        wikidata_data = wikidata
-
-        wikidata_symbol(wikidata_data)
+        wikidata_image
+        wikidata_wikilink
+        wikidata_symbol
 
         return @data
       end
 
-      def wikidata_symbol(data)
-        unicode_char = data.dig("claims", WIKIDATA_TYPE_UNICODE_CHARACTER)&.first
-        @data["symbol"] = unicode_char&.dig("mainsnak", "datavalue", "value")
+      def wikidata_allowed?
+        # Always allow to load flag symbol
+        true
       end
     end
   end

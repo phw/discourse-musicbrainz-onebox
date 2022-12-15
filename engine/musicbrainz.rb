@@ -115,13 +115,20 @@ module Onebox
       end
 
       def wikidata(entity=nil)
+        entity = raw if entity.nil?
+        @wikidata ||= {}
+        return @wikidata[entity["id"]] if !@wikidata[entity["id"]].nil?
         return nil if !wikidata_allowed?
         wikidata_rel = get_relations("url", ["wikidata"], entity: entity).first
         return nil if wikidata_rel.nil?
         url = wikidata_rel.dig("url", "resource")
-        data = wikidata_data(url)
+        @wikidata[entity["id"]] = wikidata_data(url)
+      end
+
+      def wikidata_wikilink(entity=nil)
         if SiteSetting.musicbrainz_show_wikipedia_link && !@data[:has_wiki_link]
-          wiki = data.dig("sitelinks", "enwiki")
+          data = wikidata(entity)
+          wiki = data&.dig("sitelinks", "enwiki")
           if wiki
             @data[:has_wiki_link] = true
             add_external_link(
@@ -132,16 +139,23 @@ module Onebox
             )
           end
         end
-
-        if SiteSetting.musicbrainz_load_wikimedia_images
-          wikidata_image(url, data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
-          wikidata_image(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
-        end
-
-        data
       end
 
-      def wikidata_image(url, data, type)
+      def wikidata_image(entity=nil)
+        if SiteSetting.musicbrainz_load_wikimedia_images
+          data = wikidata(entity)
+          wikidata_image_type(url, data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
+          wikidata_image_type(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
+        end
+      end
+
+      def wikidata_symbol(entity=nil)
+        data = wikidata(entity)
+        unicode_char = data&.dig("claims", WIKIDATA_TYPE_UNICODE_CHARACTER)&.first
+        @data["symbol"] = unicode_char&.dig("mainsnak", "datavalue", "value")
+      end
+
+      def wikidata_image_type(url, data, type)
         @data[:image] = wikidata_image_url(data, type)
         if !@data[:image].nil?
           @data[:image_source] = url

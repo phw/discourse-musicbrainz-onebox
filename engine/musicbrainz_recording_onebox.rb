@@ -34,7 +34,8 @@ module Onebox
         disambiguation
         genres
         add_critiquebrainz_link
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         types = []
         primary_type = (raw["video"] ? "video" : "recording")

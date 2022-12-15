@@ -35,7 +35,8 @@ module Onebox
         genres
         add_critiquebrainz_link
         image "logo"
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         return @data
       end

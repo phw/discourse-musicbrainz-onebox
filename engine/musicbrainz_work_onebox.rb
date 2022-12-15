@@ -35,7 +35,8 @@ module Onebox
         disambiguation
         add_critiquebrainz_link
         image
-        wikidata
+        wikidata_image
+        wikidata_wikilink
         written_by
         parent_work
 

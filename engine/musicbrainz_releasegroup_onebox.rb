@@ -36,7 +36,8 @@ module Onebox
         genres
         add_critiquebrainz_link
         caa_rg_image(raw["id"])
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         if raw["secondary-types"] && !raw["secondary-types"].empty?
           @data[:secondary] = raw["secondary-types"].join(", ")

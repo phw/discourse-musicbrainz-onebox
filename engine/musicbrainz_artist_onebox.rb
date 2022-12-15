@@ -36,7 +36,8 @@ module Onebox
         genres
         add_critiquebrainz_link
         image
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         data[:description] = join_list [
           data[:type],

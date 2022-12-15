@@ -35,7 +35,8 @@ module Onebox
         life_span
         add_critiquebrainz_link
         image
-        wikidata
+        wikidata_image
+        wikidata_wikilink
 
         return @data
       end
