@@ -31,16 +31,16 @@ module Onebox
       end
 
       def area
-        @data[:area] = raw["area"]["name"] if raw["area"]
+        @data[:area] = raw.dig("area", "name") if raw["area"]
       end
 
       def life_span
-        if raw["life-span"] && (raw["life-span"]["begin"] || raw["life-span"]["ended"])
-          @data[:begin] = raw["life-span"]["begin"]
+        if raw["life-span"] && (raw.dig("life-span", "begin") || raw.dig("life-span", "ended"))
+          @data[:begin] = raw.dig("life-span", "begin")
           @data[:begin] = "????" if !@data[:begin]
-          @data[:end] = raw["life-span"]["end"]
+          @data[:end] = raw.dig("life-span", "end")
 
-          if !@data[:end] && raw["life-span"]["ended"]
+          if !@data[:end] && raw.dig("life-span", "ended")
             @data[:end] = "????"
           end
 
@@ -73,12 +73,12 @@ module Onebox
       def image(type="image")
         image = get_relations("url", [type]).first
         if image
-          @data[:image] = wikimedia_image_url(image["url"]["resource"])
+          @data[:image] = wikimedia_image_url(image.dig("url", "resource"))
           @data[:image_source_label] = "image source"
           if !@data[:image].nil?
-            @data[:image_source] = image["url"]["resource"]
+            @data[:image_source] = image.dig("url", "resource")
             @data[:image_source_label] = "Wikimedia"
-          elsif !image["url"]["resource"].empty? && SiteSetting.musicbrainz_load_other_images
+          elsif !image.dig("url", "resource")&.empty? && SiteSetting.musicbrainz_load_other_images
             image_url = image["url"]["resource"]
             @data[:image] = image_url
             @data[:image_source] = image_url
@@ -94,7 +94,7 @@ module Onebox
         url = wikidata["url"]["resource"]
         data = wikidata_data(url)
         if SiteSetting.musicbrainz_show_wikipedia_link
-          wiki = data["sitelinks"]["enwiki"]
+          wiki = data.dig("sitelinks", "enwiki")
           if wiki
             add_external_link(
               :url => wiki["url"],

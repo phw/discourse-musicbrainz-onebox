@@ -46,8 +46,8 @@ module Onebox
           types << "instrumental" if attributes.include? "instrumental"
           types << "cover" if attributes.include? "cover"
           primary_type = "medley" if attributes.include? "medley"
-          @data[:work] = work_rel["work"]["title"]
-          @data[:work_url] = get_mb_url("work", work_rel["work"]["id"])
+          @data[:work] = work_rel.dig("work", "title")
+          @data[:work_url] = get_mb_url("work", work_rel.dig("work", "id"))
         end
 
         types << primary_type

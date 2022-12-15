@@ -39,7 +39,7 @@ module Onebox
         return nil if id.nil?
         api_url = wikidata_api_url(id)
         result ||= request_json(api_url)
-        result["entities"][id] if !result.nil?
+        result.dig("entities", id) if !result.nil?
       end
 
       def wikidata_image_url(data, type=WIKIDATA_TYPE_IMAGE)
@@ -52,7 +52,7 @@ module Onebox
             i.dig("mainsnak", "datatype") == "commonsMedia"
           end
           return nil if first_image.nil?
-          name = first_image["mainsnak"]["datavalue"]["value"]
+          name = first_image.dig("mainsnak", "datavalue", "value")
           return load_wikimedia_image("File:" + name.gsub(/\s/, "_"))
         rescue Exception => e
           Rails.logger.error e.message
@@ -72,8 +72,8 @@ module Onebox
       def load_wikimedia_image(name)
         api_url = wikimedia_image_api_url(name)
         result ||= request_json(api_url)
-        pages = result["query"]["pages"]
-        return pages.first[1]["imageinfo"].first["url"]
+        page = result.dig("query", "pages")&.first&.[](1)
+        return page["imageinfo"]&.first&.dig("url")
       end
     end
   end

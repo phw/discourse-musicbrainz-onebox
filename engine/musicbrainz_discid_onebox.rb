@@ -40,7 +40,7 @@ module Onebox
             end_sector: s_next,
             end_time: format_as_time(s_next),
           }
-        end
+        end if raw["offsets"]
 
         return @data
       end

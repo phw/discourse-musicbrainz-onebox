@@ -46,7 +46,7 @@ module Onebox
         if place_rel && place_rel["place"]
           place = place_rel["place"]
           @data[:place] = place["name"]
-          @data[:area] = place["area"]["name"] if place["area"]
+          @data[:area] = place.dig("area", "name")
         end
       end
 
@@ -55,7 +55,7 @@ module Onebox
           get_relations("artist", ["support act"]) +
           get_relations("artist", ["orchestra"]) +
           get_relations("artist", ["guest performer"])
-        performers = performer_rels.map { |rel| rel["artist"]["name"] }
+        performers = performer_rels.map { |rel| rel.dig("artist", "name") }
         @data[:performers] = join_sentence(performers)
       end
     end
