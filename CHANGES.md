@@ -1,6 +1,7 @@
 # 0.11.1 - 2022-12-??
 - Fixed selection of first Wikimedia Commons picture
 - Fixed loading release group images from CAA
+- Fixed loading Wikipedia link for release groups, releases and recordings
 - Fixed life-span formatting with end date
 - Fixed minor formatting issue in event template
 
