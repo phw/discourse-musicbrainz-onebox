@@ -67,9 +67,9 @@ module Onebox
           totaltracks += m["track-count"] || 0
         end
         @data[:media] = join_list(media.map do |medium, count|
-          count > 1 ? "#{count}×#{medium}" : medium
+          count > 1 ? "#{format_number(count)}×#{medium}" : medium
         end)
-        @data[:totaltracks] = totaltracks if totaltracks > 0
+        @data[:totaltracks] = format_number(totaltracks) if totaltracks > 0
       end
     end
   end

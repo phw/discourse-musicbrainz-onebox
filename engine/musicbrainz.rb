@@ -178,6 +178,10 @@ module Onebox
         "%02d:%02d" % [seconds / 60, seconds % 60]
       end
 
+      def format_number(number, thousands_separator="\u202F")
+        number.to_s.reverse.scan(/\d{1,3}/).join(thousands_separator).reverse
+      end
+
       module ClassMethods
         def matches_entity(entity)
           class_variable_set :@@entity, entity

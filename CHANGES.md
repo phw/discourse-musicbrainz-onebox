@@ -1,3 +1,6 @@
+# 0.12 - 202?-??-??
+- Render track counts on releases with thousands separator
+
 # 0.11.1 - 2022-12-15
 - Fixed selection of first Wikimedia Commons picture
 - Fixed loading release group images from CAA
