@@ -62,6 +62,10 @@ module Onebox
         end
       end
 
+      def wikidata_wiki_url(id)
+        "https://www.wikidata.org/wiki/#{id}"
+      end
+
       def wikidata_api_url(id)
         "https://www.wikidata.org/wiki/Special:EntityData/#{id}.json"
       end

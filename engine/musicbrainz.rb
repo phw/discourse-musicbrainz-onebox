@@ -73,13 +73,13 @@ module Onebox
       def image(type="image")
         image = get_relations("url", [type]).first
         if image
-          @data[:image] = wikimedia_image_url(image.dig("url", "resource"))
+          image_url = image.dig("url", "resource")
+          @data[:image] = wikimedia_image_url(image_url)
           @data[:image_source_label] = "image source"
           if !@data[:image].nil?
-            @data[:image_source] = image.dig("url", "resource")
+            @data[:image_source] = image_url
             @data[:image_source_label] = "Wikimedia"
-          elsif !image.dig("url", "resource")&.empty? && SiteSetting.musicbrainz_load_other_images
-            image_url = image["url"]["resource"]
+          elsif !image_url&.empty? && SiteSetting.musicbrainz_load_other_images
             @data[:image] = image_url
             @data[:image_source] = image_url
             @data[:image_source_label] = URI.parse(image_url).host.downcase
@@ -144,8 +144,8 @@ module Onebox
       def wikidata_image(entity=nil)
         if SiteSetting.musicbrainz_load_wikimedia_images
           data = wikidata(entity)
-          wikidata_image_type(url, data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
-          wikidata_image_type(url, data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
+          wikidata_image_type(data, WIKIDATA_TYPE_IMAGE) if !@data[:image]
+          wikidata_image_type(data, WIKIDATA_TYPE_LOGO_IMAGE) if !@data[:image]
         end
       end
 
@@ -155,10 +155,10 @@ module Onebox
         @data["symbol"] = unicode_char&.dig("mainsnak", "datavalue", "value")
       end
 
-      def wikidata_image_type(url, data, type)
+      def wikidata_image_type(data, type)
         @data[:image] = wikidata_image_url(data, type)
         if !@data[:image].nil?
-          @data[:image_source] = url
+          @data[:image_source] = wikidata_wiki_url(data["id"])
           @data[:image_source_label] = "Wikidata"
         end
       end
