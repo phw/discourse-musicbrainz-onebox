@@ -1,0 +1,24 @@
+{{#image}}
+<figure>
+  <a href="{{link}}"><img src="{{image}}" class="thumbnail"/></a>
+{{#image_source}}<figcaption>
+    <a href="{{image_source}}" class="image-source">{{image_source_label}}</a>
+  </figcaption>{{/image_source}}
+</figure>
+{{/image}}
+
+<div class="external-links">
+  {{#external_links}}
+    <a href="{{url}}">
+      <img src="/plugins/musicbrainz-onebox/images/{{icon}}"
+        alt="{{alt}}" title="{{title}}" width="16" height="16">
+    </a>
+  {{/external_links}}
+</div>
+
+<h3>
+  <a href="{{link}}">{{title}}</a>
+  {{#disambiguation}}
+  <span class="disambiguation">({{disambiguation}})</span>
+  {{/disambiguation}}
+</h3>
