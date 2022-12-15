@@ -1,5 +1,6 @@
-# 0.11 - 202?-??-??
+# 0.11 - 2022-12-15
 - Show instrument description
+- Updated settings description texts and translations
 
 # 0.10.0 - 2022-12-14
 - Show total track count for releases
