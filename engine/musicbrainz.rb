@@ -122,7 +122,12 @@ module Onebox
         wikidata_rel = get_relations("url", ["wikidata"], entity: entity).first
         return nil if wikidata_rel.nil?
         url = wikidata_rel.dig("url", "resource")
-        @wikidata[entity["id"]] = wikidata_data(url)
+        begin
+          @wikidata[entity["id"]] = wikidata_data(url)
+        rescue OpenURI::HTTPError => e
+          Rails.logger.error "#{e.message}: #{url}"
+          @wikidata[entity["id"]] = {}
+        end
       end
 
       def wikidata_wikilink(entity=nil)
