@@ -1,3 +1,6 @@
+# 0.13.1 - 2023-??-??
+- Fixed display size of external link icons
+
 # 0.13 - 2023-01-09
 - Public collections onebox
 
