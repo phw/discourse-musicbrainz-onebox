@@ -3,7 +3,7 @@
 This plugin adds Onebox support for [MusicBrainz.org](https://musicbrainz.org) to [Discourse](https://www.discourse.org/).
 Use it to quickly display information about artists, releases, labels and more.
 
-This plugin is primarily used in the [MetaBrainz Community](https://community.metabrainz.org/) forums.
+This plugin is primarily used in the [MetaBrainz Community](https://community.metabrainz.org/) forums. See this [forum post](https://community.metabrainz.org/t/discourse-musicbrainz-onebox/618208) for some examples of oneboxes provided by this plugin.
 
 
 ## Supported entities
@@ -34,7 +34,7 @@ You can configure the MusicBrainz oneboxes in the Discourse admin interface. The
 
 **musicbrainz load caa images**: Enable, to load images for releases and release groups from [Cover Art Archive](https://coverartarchive.org/). Default: enabled.
 
-**musicbrainz load wikimedia images**: Enable, to load images from [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page). This requires the MusicBrainz entity to either have a link to an image on Wikimedia or have a [Wikidata](https://www.wikidata.org/) entry. Default: enabled.
+**musicbrainz load wikimedia images**: Enable, to load images from [Wikimedia Commons](https://commons.wikimedia.org/). This requires the MusicBrainz entity to either have a link to an image on Wikimedia or have a [Wikidata](https://www.wikidata.org/) entry. Default: enabled.
 
 **musicbrainz load other images**: Enable, to load images from other sources. This requires the MusicBrainz entity to link to an external image with a URL relationship. This is currently mainly used
 by label logos and for some instruments. Default: enabled.
