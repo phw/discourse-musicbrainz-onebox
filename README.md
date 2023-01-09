@@ -20,6 +20,7 @@ This plugin is primarily used in the [MetaBrainz Community](https://community.me
 - [x] Instruments
 - [x] Areas
 - [x] DiscIDs
+- [x] Public collections
 
 
 ## Installation
@@ -45,6 +46,6 @@ by label logos and for some instruments. Default: enabled.
 
 ## License
 
-Discourse MusicBrainz Onebox plugin © 2016-2022 Philipp Wolfer <ph.wolfer@gmail.com>
+Discourse MusicBrainz Onebox plugin © 2016-2023 Philipp Wolfer <ph.wolfer@gmail.com>
 
 Published under the MIT license, see LICENSE.txt for details.

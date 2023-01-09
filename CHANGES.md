@@ -1,3 +1,6 @@
+# 0.13 - 2023-01-09
+- Public collections onebox
+
 # 0.12 - 2022-12-17
 - Load release group image for releases without cover art
 - Load Wikidata data from release group if missing in release
