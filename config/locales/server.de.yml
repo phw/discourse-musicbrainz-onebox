@@ -1,5 +1,6 @@
 de:
   site_settings:
+    musicbrainz_enabled: "MusicBrainz Oneboxes aktivieren"
     musicbrainz_load_caa_images: "Bilder von Cover Art Archive laden"
     musicbrainz_load_wikimedia_images: "Bilder von Wikimedia laden"
     musicbrainz_load_other_images: "Bilder von anderen Quellen laden"

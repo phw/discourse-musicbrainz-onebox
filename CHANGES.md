@@ -1,3 +1,6 @@
+# 0.14 - 2023-01-28
+- Added separate setting `musicbrainz_enabled` to enable / disable this plugin
+
 # 0.13.1 - 2023-01-16
 - Fixed display size of external link icons
 

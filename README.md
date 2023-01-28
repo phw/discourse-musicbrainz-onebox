@@ -32,6 +32,8 @@ Please follow this official [plugin installation how-to](https://meta.discourse.
 
 You can configure the MusicBrainz oneboxes in the Discourse admin interface. The following options are available:
 
+**musicbrainz enabled**: Enable MusicBrainz Oneboxes. Default: enabled.
+
 **musicbrainz load caa images**: Enable, to load images for releases and release groups from [Cover Art Archive](https://coverartarchive.org/). Default: enabled.
 
 **musicbrainz load wikimedia images**: Enable, to load images from [Wikimedia Commons](https://commons.wikimedia.org/). This requires the MusicBrainz entity to either have a link to an image on Wikimedia or have a [Wikidata](https://www.wikidata.org/) entry. Default: enabled.

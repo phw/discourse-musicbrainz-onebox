@@ -1,6 +1,6 @@
 # name: musicbrainz-onebox
 # about: OneBox preview for MusicBrainz.org
-# version: 0.13.1
+# version: 0.14
 # authors: Philipp Wolfer <ph.wolfer@gmail.com>
 # url: https://github.com/phw/discourse-musicbrainz-onebox
 
@@ -20,7 +20,7 @@ require_relative 'engine/musicbrainz_releasegroup_onebox'
 require_relative 'engine/musicbrainz_series_onebox'
 require_relative 'engine/musicbrainz_work_onebox'
 
-enabled_site_setting :musicbrainz_load_wikimedia_images
+enabled_site_setting :musicbrainz_enabled
 
 register_asset "stylesheets/musicbrainz.scss"
 

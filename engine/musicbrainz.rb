@@ -234,6 +234,14 @@ module Onebox
       end
 
       module ClassMethods
+        def ===(other)
+          if !SiteSetting.musicbrainz_enabled
+            false
+          else
+            super
+          end
+        end
+
         def matches_entity(entity)
           class_variable_set :@@entity, entity
           matches_regexp(/^https?:\/\/(?<domain>(?:beta\.)?musicbrainz\.org)\/#{Regexp.escape(entity)}\/(?<mbid>[0-9a-z-]{36})(?!\/(?:edit|open_edits))/)

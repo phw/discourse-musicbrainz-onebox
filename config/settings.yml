@@ -1,4 +1,8 @@
 plugins:
+  musicbrainz_enabled:
+    default: true
+    client: true
+
   musicbrainz_load_caa_images:
     default: true
 
