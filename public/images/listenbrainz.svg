@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="a"
+   viewBox="0 0 30 30"
+   version="1.1"
+   width="30"
+   height="30"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4">
+    <style
+       id="style2">.b{fill:#353070;}.c{fill:#eb743b;}</style>
+  </defs>
+  <g
+     id="g830"
+     transform="translate(1.5)">
+    <polygon
+       class="b"
+       points="1,22 13,29 13,1 1,8 "
+       id="polygon6" />
+    <polygon
+       class="c"
+       points="26,22 14,29 14,1 26,8 "
+       id="polygon8" />
+  </g>
+</svg>

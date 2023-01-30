@@ -33,6 +33,7 @@ module Onebox
 
         @data = {
           link: @url,
+          id: raw["id"],
           title: raw["title"],
           status: raw["status"],
           date: raw["date"]
@@ -48,13 +49,14 @@ module Onebox
 
         release_group = raw["release-group"]
         if release_group
-          add_critiquebrainz_link(release_group["id"], "release-group")
           genres(release_group) if !@data[:genres]
           caa_rg_image(release_group["id"]) if !@data[:image]
           wikidata_image(release_group)
           wikidata_wikilink(release_group)
+          add_critiquebrainz_link(release_group["id"], "release-group")
         end
 
+        add_listenbrainz_link
         return @data
       end
 
@@ -78,6 +80,15 @@ module Onebox
           @data[:image_source] = image_source_url
           @data[:image_source_label] = "Cover Art Archive"
         end
+      end
+
+      def add_listenbrainz_link
+        add_external_link(
+          :url => "https://listenbrainz.org/player/#{self.class.entity}/#{@data[:id]}",
+          :icon => "listenbrainz.svg",
+          :title => "Play on ListenBrainz",
+          :alt => "LB",
+        )
       end
     end
   end

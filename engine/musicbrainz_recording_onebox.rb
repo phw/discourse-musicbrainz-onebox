@@ -33,9 +33,10 @@ module Onebox
         artist_credits
         disambiguation
         genres
-        add_critiquebrainz_link
         wikidata_image
         wikidata_wikilink
+        add_critiquebrainz_link
+        add_listenbrainz_link
 
         types = []
         primary_type = (raw["video"] ? "video" : "recording")
@@ -71,6 +72,14 @@ module Onebox
         end
       end
 
+      def add_listenbrainz_link
+        add_external_link(
+          :url => "https://listenbrainz.org/player/?recording_mbids=#{@data[:id]}",
+          :icon => "listenbrainz.svg",
+          :title => "Play on ListenBrainz",
+          :alt => "LB",
+        )
+      end
     end
   end
 end
