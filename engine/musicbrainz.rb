@@ -183,7 +183,7 @@ module Onebox
         entity = self.class.entity if entity.nil?
         add_external_link(
           :url => "https://critiquebrainz.org/#{entity}/#{id}",
-          :icon => "critiquebrainz.png",
+          :icon => "critiquebrainz.svg",
           :title => "CritiqueBrainz",
           :alt => "CB",
         )
