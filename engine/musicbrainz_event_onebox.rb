@@ -32,10 +32,10 @@ module Onebox
 
         disambiguation
         life_span
-        add_critiquebrainz_link
         image
         wikidata_image
         wikidata_wikilink
+        add_critiquebrainz_link
         place
         performers
 

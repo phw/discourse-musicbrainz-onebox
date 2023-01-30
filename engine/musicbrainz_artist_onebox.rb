@@ -34,10 +34,10 @@ module Onebox
         area
         life_span
         genres
-        add_critiquebrainz_link
         image
         wikidata_image
         wikidata_wikilink
+        add_critiquebrainz_link
 
         data[:description] = join_list [
           data[:type],

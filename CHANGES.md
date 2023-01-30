@@ -1,5 +1,6 @@
 # 0.15 - 2023-0?-??
 - Added ListenBrainz link for releases and recordings
+- Consistent ordering of external link icons
 
 # 0.14 - 2023-01-28
 - Added separate setting `musicbrainz_enabled` to enable / disable this plugin

@@ -33,10 +33,10 @@ module Onebox
         @data[:type] = "Work" if @data[:type].to_s.empty?
 
         disambiguation
-        add_critiquebrainz_link
         image
         wikidata_image
         wikidata_wikilink
+        add_critiquebrainz_link
         written_by
         parent_work
 

@@ -34,10 +34,10 @@ module Onebox
         artist_credits
         disambiguation
         genres
-        add_critiquebrainz_link
         caa_rg_image(raw["id"])
         wikidata_image
         wikidata_wikilink
+        add_critiquebrainz_link
 
         if raw["secondary-types"] && !raw["secondary-types"].empty?
           @data[:secondary] = join_list(raw["secondary-types"])
