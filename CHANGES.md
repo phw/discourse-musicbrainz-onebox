@@ -1,4 +1,4 @@
-# 0.15 - 2023-0?-??
+# 0.15 - 2023-01-31
 - Added ListenBrainz link for releases and recordings
 - Consistent ordering of external link icons
 - Use SVG icon for CritiqueBrainz
