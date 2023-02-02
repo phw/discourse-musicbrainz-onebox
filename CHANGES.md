@@ -1,3 +1,6 @@
+# 0.15.1 - 2023-02-02
+- Fixed cover art stylesheet for Discourse 3.1
+
 # 0.15 - 2023-01-31
 - Added ListenBrainz link for releases and recordings
 - Consistent ordering of external link icons
