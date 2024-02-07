@@ -7,7 +7,7 @@ module Onebox
       include LayoutSupport
       include MusicBrainz
 
-      matches_regexp(/^https?:\/\/(?<domain>(?:beta\.)?musicbrainz\.org)\/cdtoc\/(?<discid>[0-9A-Za-z-_.]+)/)
+      matches_regexp(/^https?:\/\/(?<domain>(?:beta\.)?musicbrainz\.org)\/cdtoc\/(?<discid>[0-9A-Za-z\-_.]+)/)
       always_https
 
       private
