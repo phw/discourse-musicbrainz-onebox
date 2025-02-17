@@ -1,3 +1,7 @@
+# 0.15.2 - 2025-02-17
+- Fixed external link icon size for newer Discourse
+- Fixed external link icon order for label onebox
+
 # 0.15.1 - 2023-02-02
 - Fixed cover art stylesheet for Discourse 3.1
 
